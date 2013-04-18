@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateParamsLangTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateParamsLangLabel_idparamsLang}" for="idparamsLang" />
+                    <h:inputText id="idparamsLang" value="#{paramsLangController.selected.idparamsLang}" title="#{bundle.CreateParamsLangTitle_idparamsLang}" required="true" requiredMessage="#{bundle.CreateParamsLangRequiredMessage_idparamsLang}"/>
+                    <h:outputLabel value="#{bundle.CreateParamsLangLabel_intitule}" for="intitule" />
+                    <h:inputText id="intitule" value="#{paramsLangController.selected.intitule}" title="#{bundle.CreateParamsLangTitle_intitule}" />
+                    <h:outputLabel value="#{bundle.CreateParamsLangLabel_paramsIdparams}" for="paramsIdparams" />
+                    <h:selectOneMenu id="paramsIdparams" value="#{paramsLangController.selected.paramsIdparams}" title="#{bundle.CreateParamsLangTitle_paramsIdparams}" required="true" requiredMessage="#{bundle.CreateParamsLangRequiredMessage_paramsIdparams}">
+                        <f:selectItems value="#{paramsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateParamsLangLabel_langIdlang}" for="langIdlang" />
+                    <h:selectOneMenu id="langIdlang" value="#{paramsLangController.selected.langIdlang}" title="#{bundle.CreateParamsLangTitle_langIdlang}" required="true" requiredMessage="#{bundle.CreateParamsLangRequiredMessage_langIdlang}">
+                        <f:selectItems value="#{langController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{paramsLangController.create}" value="#{bundle.CreateParamsLangSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{paramsLangController.prepareList}" value="#{bundle.CreateParamsLangShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateParamsLangIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

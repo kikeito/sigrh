@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLangTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLangLabel_idlang}"/>
+                    <h:outputText value="#{langController.selected.idlang}" title="#{bundle.ViewLangTitle_idlang}"/>
+                    <h:outputText value="#{bundle.ViewLangLabel_isoCode}"/>
+                    <h:outputText value="#{langController.selected.isoCode}" title="#{bundle.ViewLangTitle_isoCode}"/>
+                    <h:outputText value="#{bundle.ViewLangLabel_intitule}"/>
+                    <h:outputText value="#{langController.selected.intitule}" title="#{bundle.ViewLangTitle_intitule}"/>
+                    <h:outputText value="#{bundle.ViewLangLabel_active}"/>
+                    <h:outputText value="#{langController.selected.active}" title="#{bundle.ViewLangTitle_active}"/>
+                    <h:outputText value="#{bundle.ViewLangLabel_atrdefault}"/>
+                    <h:outputText value="#{langController.selected.atrdefault}" title="#{bundle.ViewLangTitle_atrdefault}"/>
+                    <h:outputText value="#{bundle.ViewLangLabel_deleted}"/>
+                    <h:outputText value="#{langController.selected.deleted}" title="#{bundle.ViewLangTitle_deleted}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{langController.destroyAndView}" value="#{bundle.ViewLangDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewLangEditLink}"/>
+                <br />
+                <h:commandLink action="#{langController.prepareCreate}" value="#{bundle.ViewLangCreateLink}" />
+                <br />
+                <h:commandLink action="#{langController.prepareList}" value="#{bundle.ViewLangShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewLangIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

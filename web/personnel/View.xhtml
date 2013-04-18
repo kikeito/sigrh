@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPersonnelTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_idpersonnel}"/>
+                    <h:outputText value="#{personnelController.selected.idpersonnel}" title="#{bundle.ViewPersonnelTitle_idpersonnel}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_cnrps}"/>
+                    <h:outputText value="#{personnelController.selected.cnrps}" title="#{bundle.ViewPersonnelTitle_cnrps}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_cin}"/>
+                    <h:outputText value="#{personnelController.selected.cin}" title="#{bundle.ViewPersonnelTitle_cin}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_email}"/>
+                    <h:outputText value="#{personnelController.selected.email}" title="#{bundle.ViewPersonnelTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_specialite}"/>
+                    <h:outputText value="#{personnelController.selected.specialite}" title="#{bundle.ViewPersonnelTitle_specialite}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_tel}"/>
+                    <h:outputText value="#{personnelController.selected.tel}" title="#{bundle.ViewPersonnelTitle_tel}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_fax}"/>
+                    <h:outputText value="#{personnelController.selected.fax}" title="#{bundle.ViewPersonnelTitle_fax}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_addresse}"/>
+                    <h:outputText value="#{personnelController.selected.addresse}" title="#{bundle.ViewPersonnelTitle_addresse}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_codepostal}"/>
+                    <h:outputText value="#{personnelController.selected.codepostal}" title="#{bundle.ViewPersonnelTitle_codepostal}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_ville}"/>
+                    <h:outputText value="#{personnelController.selected.ville}" title="#{bundle.ViewPersonnelTitle_ville}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_dateUpd}"/>
+                    <h:outputText value="#{personnelController.selected.dateUpd}" title="#{bundle.ViewPersonnelTitle_dateUpd}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_dateAdd}"/>
+                    <h:outputText value="#{personnelController.selected.dateAdd}" title="#{bundle.ViewPersonnelTitle_dateAdd}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_active}"/>
+                    <h:outputText value="#{personnelController.selected.active}" title="#{bundle.ViewPersonnelTitle_active}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_position}"/>
+                    <h:outputText value="#{personnelController.selected.position}" title="#{bundle.ViewPersonnelTitle_position}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_deleted}"/>
+                    <h:outputText value="#{personnelController.selected.deleted}" title="#{bundle.ViewPersonnelTitle_deleted}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLabel_gradeIdgrade}"/>
+                    <h:outputText value="#{personnelController.selected.gradeIdgrade}" title="#{bundle.ViewPersonnelTitle_gradeIdgrade}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personnelController.destroyAndView}" value="#{bundle.ViewPersonnelDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPersonnelEditLink}"/>
+                <br />
+                <h:commandLink action="#{personnelController.prepareCreate}" value="#{bundle.ViewPersonnelCreateLink}" />
+                <br />
+                <h:commandLink action="#{personnelController.prepareList}" value="#{bundle.ViewPersonnelShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPersonnelIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

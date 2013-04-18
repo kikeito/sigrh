@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateGradeLangTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateGradeLangLabel_idgradeLang}" for="idgradeLang" />
+                    <h:inputText id="idgradeLang" value="#{gradeLangController.selected.idgradeLang}" title="#{bundle.CreateGradeLangTitle_idgradeLang}" required="true" requiredMessage="#{bundle.CreateGradeLangRequiredMessage_idgradeLang}"/>
+                    <h:outputLabel value="#{bundle.CreateGradeLangLabel_intitule}" for="intitule" />
+                    <h:inputText id="intitule" value="#{gradeLangController.selected.intitule}" title="#{bundle.CreateGradeLangTitle_intitule}" />
+                    <h:outputLabel value="#{bundle.CreateGradeLangLabel_langIdlang}" for="langIdlang" />
+                    <h:selectOneMenu id="langIdlang" value="#{gradeLangController.selected.langIdlang}" title="#{bundle.CreateGradeLangTitle_langIdlang}" required="true" requiredMessage="#{bundle.CreateGradeLangRequiredMessage_langIdlang}">
+                        <f:selectItems value="#{langController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateGradeLangLabel_gradeIdgrade}" for="gradeIdgrade" />
+                    <h:selectOneMenu id="gradeIdgrade" value="#{gradeLangController.selected.gradeIdgrade}" title="#{bundle.CreateGradeLangTitle_gradeIdgrade}" required="true" requiredMessage="#{bundle.CreateGradeLangRequiredMessage_gradeIdgrade}">
+                        <f:selectItems value="#{gradeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{gradeLangController.create}" value="#{bundle.CreateGradeLangSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{gradeLangController.prepareList}" value="#{bundle.CreateGradeLangShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateGradeLangIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

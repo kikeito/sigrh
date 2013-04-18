@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateParamsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateParamsLabel_idparams}" for="idparams" />
+                    <h:inputText id="idparams" value="#{paramsController.selected.idparams}" title="#{bundle.CreateParamsTitle_idparams}" required="true" requiredMessage="#{bundle.CreateParamsRequiredMessage_idparams}"/>
+                    <h:outputLabel value="#{bundle.CreateParamsLabel_type}" for="type" />
+                    <h:inputText id="type" value="#{paramsController.selected.type}" title="#{bundle.CreateParamsTitle_type}" />
+                    <h:outputLabel value="#{bundle.CreateParamsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{paramsController.selected.id}" title="#{bundle.CreateParamsTitle_id}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{paramsController.create}" value="#{bundle.CreateParamsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{paramsController.prepareList}" value="#{bundle.CreateParamsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateParamsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

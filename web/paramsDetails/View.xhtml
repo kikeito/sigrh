@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewParamsDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewParamsDetailsLabel_idparamsDetails}"/>
+                    <h:outputText value="#{paramsDetailsController.selected.idparamsDetails}" title="#{bundle.ViewParamsDetailsTitle_idparamsDetails}"/>
+                    <h:outputText value="#{bundle.ViewParamsDetailsLabel_date1}"/>
+                    <h:outputText value="#{paramsDetailsController.selected.date1}" title="#{bundle.ViewParamsDetailsTitle_date1}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewParamsDetailsLabel_date2}"/>
+                    <h:outputText value="#{paramsDetailsController.selected.date2}" title="#{bundle.ViewParamsDetailsTitle_date2}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewParamsDetailsLabel_personnelIdpersonnel}"/>
+                    <h:outputText value="#{paramsDetailsController.selected.personnelIdpersonnel}" title="#{bundle.ViewParamsDetailsTitle_personnelIdpersonnel}"/>
+                    <h:outputText value="#{bundle.ViewParamsDetailsLabel_paramsIdparams}"/>
+                    <h:outputText value="#{paramsDetailsController.selected.paramsIdparams}" title="#{bundle.ViewParamsDetailsTitle_paramsIdparams}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{paramsDetailsController.destroyAndView}" value="#{bundle.ViewParamsDetailsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewParamsDetailsEditLink}"/>
+                <br />
+                <h:commandLink action="#{paramsDetailsController.prepareCreate}" value="#{bundle.ViewParamsDetailsCreateLink}" />
+                <br />
+                <h:commandLink action="#{paramsDetailsController.prepareList}" value="#{bundle.ViewParamsDetailsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewParamsDetailsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPersonnelLangTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPersonnelLangLabel_idpersonnelLang}"/>
+                    <h:outputText value="#{personnelLangController.selected.idpersonnelLang}" title="#{bundle.ViewPersonnelLangTitle_idpersonnelLang}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLangLabel_nom}"/>
+                    <h:outputText value="#{personnelLangController.selected.nom}" title="#{bundle.ViewPersonnelLangTitle_nom}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLangLabel_prenom}"/>
+                    <h:outputText value="#{personnelLangController.selected.prenom}" title="#{bundle.ViewPersonnelLangTitle_prenom}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLangLabel_personnelIdpersonnel}"/>
+                    <h:outputText value="#{personnelLangController.selected.personnelIdpersonnel}" title="#{bundle.ViewPersonnelLangTitle_personnelIdpersonnel}"/>
+                    <h:outputText value="#{bundle.ViewPersonnelLangLabel_langIdlang}"/>
+                    <h:outputText value="#{personnelLangController.selected.langIdlang}" title="#{bundle.ViewPersonnelLangTitle_langIdlang}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personnelLangController.destroyAndView}" value="#{bundle.ViewPersonnelLangDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPersonnelLangEditLink}"/>
+                <br />
+                <h:commandLink action="#{personnelLangController.prepareCreate}" value="#{bundle.ViewPersonnelLangCreateLink}" />
+                <br />
+                <h:commandLink action="#{personnelLangController.prepareList}" value="#{bundle.ViewPersonnelLangShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPersonnelLangIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

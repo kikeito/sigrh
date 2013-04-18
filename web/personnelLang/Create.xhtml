@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePersonnelLangTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePersonnelLangLabel_idpersonnelLang}" for="idpersonnelLang" />
+                    <h:inputText id="idpersonnelLang" value="#{personnelLangController.selected.idpersonnelLang}" title="#{bundle.CreatePersonnelLangTitle_idpersonnelLang}" required="true" requiredMessage="#{bundle.CreatePersonnelLangRequiredMessage_idpersonnelLang}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonnelLangLabel_nom}" for="nom" />
+                    <h:inputText id="nom" value="#{personnelLangController.selected.nom}" title="#{bundle.CreatePersonnelLangTitle_nom}" />
+                    <h:outputLabel value="#{bundle.CreatePersonnelLangLabel_prenom}" for="prenom" />
+                    <h:inputText id="prenom" value="#{personnelLangController.selected.prenom}" title="#{bundle.CreatePersonnelLangTitle_prenom}" />
+                    <h:outputLabel value="#{bundle.CreatePersonnelLangLabel_personnelIdpersonnel}" for="personnelIdpersonnel" />
+                    <h:selectOneMenu id="personnelIdpersonnel" value="#{personnelLangController.selected.personnelIdpersonnel}" title="#{bundle.CreatePersonnelLangTitle_personnelIdpersonnel}" required="true" requiredMessage="#{bundle.CreatePersonnelLangRequiredMessage_personnelIdpersonnel}">
+                        <f:selectItems value="#{personnelController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonnelLangLabel_langIdlang}" for="langIdlang" />
+                    <h:selectOneMenu id="langIdlang" value="#{personnelLangController.selected.langIdlang}" title="#{bundle.CreatePersonnelLangTitle_langIdlang}" required="true" requiredMessage="#{bundle.CreatePersonnelLangRequiredMessage_langIdlang}">
+                        <f:selectItems value="#{langController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personnelLangController.create}" value="#{bundle.CreatePersonnelLangSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{personnelLangController.prepareList}" value="#{bundle.CreatePersonnelLangShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePersonnelLangIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListGradeLangTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListGradeLangEmpty}" rendered="#{gradeLangController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{gradeLangController.items.rowCount > 0}">
+                    <h:outputText value="#{gradeLangController.pagination.pageFirstItem + 1}..#{gradeLangController.pagination.pageLastItem + 1}/#{gradeLangController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{gradeLangController.previous}" value="#{bundle.Previous} #{gradeLangController.pagination.pageSize}" rendered="#{gradeLangController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{gradeLangController.next}" value="#{bundle.Next} #{gradeLangController.pagination.pageSize}" rendered="#{gradeLangController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{gradeLangController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGradeLangTitle_idgradeLang}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idgradeLang}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGradeLangTitle_intitule}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.intitule}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGradeLangTitle_langIdlang}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.langIdlang}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGradeLangTitle_gradeIdgrade}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.gradeIdgrade}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{gradeLangController.prepareView}" value="#{bundle.ListGradeLangViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{gradeLangController.prepareEdit}" value="#{bundle.ListGradeLangEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{gradeLangController.destroy}" value="#{bundle.ListGradeLangDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{gradeLangController.prepareCreate}" value="#{bundle.ListGradeLangCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListGradeLangIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

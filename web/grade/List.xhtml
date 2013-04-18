@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListGradeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListGradeEmpty}" rendered="#{gradeController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{gradeController.items.rowCount > 0}">
+                    <h:outputText value="#{gradeController.pagination.pageFirstItem + 1}..#{gradeController.pagination.pageLastItem + 1}/#{gradeController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{gradeController.previous}" value="#{bundle.Previous} #{gradeController.pagination.pageSize}" rendered="#{gradeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{gradeController.next}" value="#{bundle.Next} #{gradeController.pagination.pageSize}" rendered="#{gradeController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{gradeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGradeTitle_idgrade}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idgrade}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{gradeController.prepareView}" value="#{bundle.ListGradeViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{gradeController.prepareEdit}" value="#{bundle.ListGradeEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{gradeController.destroy}" value="#{bundle.ListGradeDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{gradeController.prepareCreate}" value="#{bundle.ListGradeCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListGradeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

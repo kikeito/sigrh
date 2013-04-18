@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateParamsDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateParamsDetailsLabel_idparamsDetails}" for="idparamsDetails" />
+                    <h:inputText id="idparamsDetails" value="#{paramsDetailsController.selected.idparamsDetails}" title="#{bundle.CreateParamsDetailsTitle_idparamsDetails}" required="true" requiredMessage="#{bundle.CreateParamsDetailsRequiredMessage_idparamsDetails}"/>
+                    <h:outputLabel value="#{bundle.CreateParamsDetailsLabel_date1}" for="date1" />
+                    <h:inputText id="date1" value="#{paramsDetailsController.selected.date1}" title="#{bundle.CreateParamsDetailsTitle_date1}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateParamsDetailsLabel_date2}" for="date2" />
+                    <h:inputText id="date2" value="#{paramsDetailsController.selected.date2}" title="#{bundle.CreateParamsDetailsTitle_date2}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateParamsDetailsLabel_personnelIdpersonnel}" for="personnelIdpersonnel" />
+                    <h:selectOneMenu id="personnelIdpersonnel" value="#{paramsDetailsController.selected.personnelIdpersonnel}" title="#{bundle.CreateParamsDetailsTitle_personnelIdpersonnel}" required="true" requiredMessage="#{bundle.CreateParamsDetailsRequiredMessage_personnelIdpersonnel}">
+                        <f:selectItems value="#{personnelController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateParamsDetailsLabel_paramsIdparams}" for="paramsIdparams" />
+                    <h:selectOneMenu id="paramsIdparams" value="#{paramsDetailsController.selected.paramsIdparams}" title="#{bundle.CreateParamsDetailsTitle_paramsIdparams}" required="true" requiredMessage="#{bundle.CreateParamsDetailsRequiredMessage_paramsIdparams}">
+                        <f:selectItems value="#{paramsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{paramsDetailsController.create}" value="#{bundle.CreateParamsDetailsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{paramsDetailsController.prepareList}" value="#{bundle.CreateParamsDetailsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateParamsDetailsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
