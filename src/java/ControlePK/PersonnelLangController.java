@@ -3,6 +3,8 @@ package ControlePK;
 import EntityPk.PersonnelLang;
 import ControlePK.util.JsfUtil;
 import ControlePK.util.PaginationHelper;
+import EntityPk.Personnel;
+import FacadePK.PersonnelFacade;
 import FacadePK.PersonnelLangFacade;
 
 import java.io.Serializable;
@@ -27,9 +29,37 @@ public class PersonnelLangController implements Serializable {
     private DataModel items = null;
     @EJB
     private FacadePK.PersonnelLangFacade ejbFacade;
+     @EJB
+    private FacadePK.PersonnelFacade ejbFacadeprs;
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private List<PersonnelLang> Personnels;
+    private PersonnelLang selectedPersonnellang;
+    private Personnel pesonnel;
+
+    public Personnel getPesonnel() {
+        return pesonnel;
+    }
+
+    public void setPesonnel(Personnel pesonnel) {
+        this.pesonnel = pesonnel;
+    }
+
+    public PersonnelFacade getEjbFacadeprs() {
+        return ejbFacadeprs;
+    }
+
+    public void setEjbFacadeprs(PersonnelFacade ejbFacadeprs) {
+        this.ejbFacadeprs = ejbFacadeprs;
+    }
+
+    public PersonnelLang getSelectedPersonnellang() {
+        return selectedPersonnellang;
+    }
+
+    public void setSelectedPersonnellang(PersonnelLang selectedPersonnellang) {
+        this.selectedPersonnellang = selectedPersonnellang;
+    }
 
     public List<PersonnelLang> getPersonnels() {
         return ejbFacade.findAll();
@@ -117,12 +147,16 @@ public class PersonnelLangController implements Serializable {
     }
 
     public String destroy() {
-        current = (PersonnelLang) getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        performDestroy();
-        recreatePagination();
-        recreateModel();
-        return "List";
+        try {
+            pesonnel=ejbFacadeprs.find(selectedPersonnellang.getPersonnelIdpersonnel().getIdpersonnel());
+            ejbFacadeprs.remove(pesonnel);
+           //getFacade().remove(this.selectedPersonnellang);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("PersonnelLangDeleted"));
+            return null;
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+             return null;
+        }
     }
 
     public String destroyAndView() {

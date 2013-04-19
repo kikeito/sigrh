@@ -3,159 +3,223 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListPersonnelLangTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListPersonnelLangEmpty}" rendered="#{personnelLangController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{personnelLangController.items.rowCount > 0}">
-                    <h:outputText value="#{personnelLangController.pagination.pageFirstItem + 1}..#{personnelLangController.pagination.pageLastItem + 1}/#{personnelLangController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{personnelLangController.previous}" value="#{bundle.Previous} #{personnelLangController.pagination.pageSize}" rendered="#{personnelLangController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{personnelLangController.next}" value="#{bundle.Next} #{personnelLangController.pagination.pageSize}" rendered="#{personnelLangController.pagination.hasNextPage}"/>&nbsp;
-                    
-                     <h:dataTable value="#{personnelLangController.personnels}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonnelLangTitle_idpersonnelLang}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idpersonnelLang}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonnelLangTitle_nom}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nom}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonnelLangTitle_prenom}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.prenom}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonnelLangTitle_personnelIdpersonnel}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel}"/>
-                        </h:column>
-                         
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="cnrps"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.cnrps}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="cin"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.cin}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="email"/>
-                            </f:facet>
-                            <h:outputText value="email"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="specialite"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.specialite}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="tel"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.tel}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="fax"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.fax}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="addresse"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.addresse}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="codepostal"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.codepostal}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="ville"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.ville}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="dateUpd"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.dateUpd}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                            </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="dateAdd"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.dateAdd}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                            </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="active"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.active}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="position"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.position}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="deleted"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.deleted}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="gradeIdgrade"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnelIdpersonnel.gradeIdgrade}"/>
-                        </h:column>
-                        
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonnelLangTitle_langIdlang}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.langIdlang}"/>
-                        </h:column>
+            <p:layout fullPage="true">  
+
+
+                <p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">  
+                    <h:outputText value="North unit content." />  
+                </p:layoutUnit>  
+
+                <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">  
+                    <h:outputText value="South unit content." />  
+                </p:layoutUnit>  
+
+                <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">  
+                    <h:outputText value="West unit content." />  
+                </p:layoutUnit>  
+
+                <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true">  
+                    <h:outputText value="Right unit content." />  
+                </p:layoutUnit>  
+
+                <p:layoutUnit position="center">  
+                    <h:form id="fr">
+                   <p:dialog    id="view" widgetVar="PosteDialog">
+                       <p:outputPanel autoUpdate="true">
+                         <p:panelGrid  id="display"  columns="2" >
+                                
+
+
+
+                                    <h:outputText value="ID" />  
+                                    <h:outputText value="#{personnelLangController.selectedPersonnellang.nom}" />  
+                                                           
+
+
+
+                               
+                         </p:panelGrid>
+                       </p:outputPanel>
+                            </p:dialog>
+                    <p:tabView   id="wxwx" dynamic="true">
                        
-                    </h:dataTable>
-                </h:panelGroup>
-                <br />
-                <h:commandLink action="#{personnelLangController.prepareCreate}" value="#{bundle.ListPersonnelLangCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListPersonnelLangIndexLink}"/>
-            </h:form>
+                        <p:tab  id="xddxf" title="Liste">
+                           
+                                
+                            
+                            <h:panelGroup>
+                             <h:form  id="form" styleClass="jsfcrud_list_form">
+                       
+
+                        
+                        <p:dataTable  value="#{personnelLangController.personnels}" var="item" selectionMode="single"  rowKey="#{item.idpersonnelLang}"  id="t" selection="#{personnelLangController.selectedPersonnellang}"  >
+                            <p:column rendered="false">
+                                <f:facet name="header">
+                                    <p:messages id="messages" /> 
+                                    <h:outputText value="#{bundle.ListPersonnelLangTitle_idpersonnelLang}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idpersonnelLang}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPersonnelLangTitle_personnelIdpersonnel}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPersonnelLangTitle_nom}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nom}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPersonnelLangTitle_prenom}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.prenom}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="cnrps"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.cnrps}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="cin"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.cin}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="email"/>
+                                </f:facet>
+                                <h:outputText value="email"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="specialite"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.specialite}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="tel"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.tel}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="fax"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.fax}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="addresse"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.addresse}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="codepostal"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.codepostal}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ville"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.ville}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="dateUpd"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.dateUpd}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="dateAdd"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.dateAdd}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="active"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.active}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="position"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.position}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="deleted"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.deleted}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="gradeIdgrade"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personnelIdpersonnel.gradeIdgrade}"/>
+                            </p:column>
+
+                            <p:column rendered="false">
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPersonnelLangTitle_langIdlang}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.langIdlang}"/>
+                            </p:column>
+                            <f:facet name="footer">  
+                                <f:facet name="footer">  
+                                    <p:commandButton   id="viewButton" value="Details" icon="ui-icon-search"  
+                                                  oncomplete="PosteDialog.show()"/>
+
+                                    <p:commandButton id="destroy" value="supprimer" icon="ui-icon-delete"  onclick="confirmation.show()"   type="button"
+                                                     />  
+                                </f:facet> 
+                            </f:facet>  
+                        </p:dataTable>
+               
+                        <p:dialog   id="confirmDialog"  
+                                         header="Supprimer "  widgetVar="confirmation"> 
+                            <h:outputText value="Spprimer #{personnelLangController.selectedPersonnellang.nom} #{personnelLangController.selectedPersonnellang.prenom} ?"/>
+                            <br> </br>
+                            <p:commandButton id="confirm" value="Oui" update="t" oncomplete="confirmation.hide()"  
+                                               actionListener="#{personnelLangController.destroy()}" />  
+                            <p:commandButton id="decline" value="non" onclick="confirmation.hide()" type="button" />   
+
+                        </p:dialog>> 
+
+                        
+                    </h:form>
+                            </h:panelGroup>
+                        </p:tab>
+                        <p:tab  id="sdsdf" title="Ajouter">
+                            kjdushdiuhsdiuhsd
+                        </p:tab>
+                    </p:tabView>
+                        </h:form>
+                </p:layoutUnit>  
+            </p:layout>
         </ui:define>
     </ui:composition>
 

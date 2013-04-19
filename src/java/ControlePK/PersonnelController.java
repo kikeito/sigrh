@@ -148,10 +148,17 @@ public class PersonnelController implements Serializable {
             return "List";
         }
     }
-
+    public void destroyp(Personnel p) {
+        try {
+            getFacade().remove(p);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("PersonnelDeleted"));
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+        }
+    }
     private void performDestroy() {
         try {
-            getFacade().remove(current);
+           ejbFacade.remove(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("PersonnelDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
