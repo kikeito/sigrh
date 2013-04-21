@@ -8,6 +8,7 @@ import FacadePK.PersonnelFacade;
 import FacadePK.PersonnelLangFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -33,7 +34,8 @@ public class PersonnelLangController implements Serializable {
     private FacadePK.PersonnelFacade ejbFacadeprs;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-    private List<PersonnelLang> Personnels;
+    private List<PersonnelLang> Personnels= new ArrayList();
+    
     private PersonnelLang selectedPersonnellang;
     private Personnel pesonnel;
 
@@ -62,7 +64,9 @@ public class PersonnelLangController implements Serializable {
     }
 
     public List<PersonnelLang> getPersonnels() {
-        return ejbFacade.findAll();
+        Personnels= new ArrayList();
+        Personnels=ejbFacade.findAll();
+        return Personnels;
     }
 
     public void setPersonnels(List<PersonnelLang> Personnels) {
