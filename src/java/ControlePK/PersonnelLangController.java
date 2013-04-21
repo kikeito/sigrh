@@ -35,11 +35,20 @@ public class PersonnelLangController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private List<PersonnelLang> Personnels= new ArrayList();
-    
+    private List<PersonnelLang> FiltredPersonnels;
     private PersonnelLang selectedPersonnellang;
     private Personnel pesonnel;
 
+    public List<PersonnelLang> getFiltredPersonnels() {
+        return FiltredPersonnels;
+    }
+
+    public void setFiltredPersonnels(List<PersonnelLang> FiltredPersonnels) {
+        this.FiltredPersonnels = FiltredPersonnels;
+    }
+
     public Personnel getPesonnel() {
+        pesonnel= new Personnel();
         return pesonnel;
     }
 
@@ -132,6 +141,16 @@ public class PersonnelLangController implements Serializable {
             return null;
         }
     }
+     public String createpers() {
+        try {
+             ejbFacadeprs.create(pesonnel);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("PersonnelCreated"));
+            return prepareCreate();
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
+    }
 
     public String prepareEdit() {
         current = (PersonnelLang) getItems().getRowData();
@@ -152,8 +171,8 @@ public class PersonnelLangController implements Serializable {
 
     public String destroy() {
         try {
-            pesonnel=ejbFacadeprs.find(selectedPersonnellang.getPersonnelIdpersonnel().getIdpersonnel());
-            ejbFacadeprs.remove(pesonnel);
+            
+            ejbFacadeprs.remove(ejbFacadeprs.find(selectedPersonnellang.getPersonnelIdpersonnel().getIdpersonnel()));
            //getFacade().remove(this.selectedPersonnellang);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("PersonnelLangDeleted"));
             return null;

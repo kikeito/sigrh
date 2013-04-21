@@ -96,7 +96,7 @@ public class PersonnelController implements Serializable {
     public String prepareCreate() {
         current = new Personnel();
         selectedItemIndex = -1;
-        return "Create";
+        return "null";
     }
 
     public String create() {
