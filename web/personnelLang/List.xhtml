@@ -31,48 +31,58 @@
             <p:dialog    position="center" modal="true" id="create" widgetVar="CreateDialog">
             
                     <h:form>
-                    <h:panelGrid columns="2">
+                    <h:panelGrid columns="4">
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_idpersonnel}" for="idpersonnel" />
-                    <h:inputText id="idpersonnel" value="#{personnelController.selected.idpersonnel}" title="#{bundle.CreatePersonnelTitle_idpersonnel}" required="true" requiredMessage="#{bundle.CreatePersonnelRequiredMessage_idpersonnel}"/>
+                    <h:inputText id="idpersonnel" value="#{personnelLangController.perscont.selected.idpersonnel}" title="#{bundle.CreatePersonnelTitle_idpersonnel}" required="true" requiredMessage="#{bundle.CreatePersonnelRequiredMessage_idpersonnel}"/>
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_cnrps}" for="cnrps" />
-                    <h:inputText id="cnrps" value="#{personnelController.selected.cnrps}" title="#{bundle.CreatePersonnelTitle_cnrps}" />
+                    <h:inputText id="cnrps" value="#{personnelLangController.perscont.selected.cnrps}" title="#{bundle.CreatePersonnelTitle_cnrps}" />
+                    <h:outputLabel value="#{bundle.CreatePersonnelLangLabel_nom}"  />
+                    <h:inputText id="nomfr" value="#{personnelLangController.nomfr}" />
+                    <h:outputLabel value="#{bundle.CreatePersonnelLangLabel_prenom}" />
+                    <h:inputText id="prenomfr" value="#{personnelLangController.prenomfr}"  />
+                    <h:outputLabel value="اللقب"  />
+                    <h:inputText id="nomar" value="#{personnelLangController.nomar}"  />
+                    <h:outputLabel value="الإسم" />
+                    <h:inputText id="prenomar" value="#{personnelLangController.prenomar}"  />
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_cin}" for="cin" />
-                    <h:inputText id="cin" value="#{personnelController.selected.cin}" title="#{bundle.CreatePersonnelTitle_cin}" />
+                    <h:inputText id="cin" value="#{personnelLangController.perscont.selected.cin}" title="#{bundle.CreatePersonnelTitle_cin}" />
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_email}" for="email" />
-                    <h:inputText id="email" value="#{personnelController.selected.email}" title="#{bundle.CreatePersonnelTitle_email}" />
+                    <h:inputText id="email" value="#{personnelLangController.perscont.selected.email}" title="#{bundle.CreatePersonnelTitle_email}" />
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_specialite}" for="specialite" />
-                    <h:inputText id="specialite" value="#{personnelController.selected.specialite}" title="#{bundle.CreatePersonnelTitle_specialite}" />
+                    <h:inputText id="specialite" value="#{personnelLangController.perscont.selected.specialite}" title="#{bundle.CreatePersonnelTitle_specialite}" />
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_tel}" for="tel" />
-                    <h:inputText id="tel" value="#{personnelController.selected.tel}" title="#{bundle.CreatePersonnelTitle_tel}" />
+                    <h:inputText id="tel" value="#{personnelLangController.perscont.selected.tel}" title="#{bundle.CreatePersonnelTitle_tel}" />
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_fax}" for="fax" />
-                    <h:inputText id="fax" value="#{personnelController.selected.fax}" title="#{bundle.CreatePersonnelTitle_fax}" />
+                    <h:inputText id="fax" value="#{personnelLangController.perscont.selected.fax}" title="#{bundle.CreatePersonnelTitle_fax}" />
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_addresse}" for="addresse" />
-                    <h:inputText id="addresse" value="#{personnelController.selected.addresse}" title="#{bundle.CreatePersonnelTitle_addresse}" />
+                    <h:inputText id="addresse" value="#{personnelLangController.perscont.selected.addresse}" title="#{bundle.CreatePersonnelTitle_addresse}" />
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_codepostal}" for="codepostal" />
-                    <h:inputText id="codepostal" value="#{personnelController.selected.codepostal}" title="#{bundle.CreatePersonnelTitle_codepostal}" />
+                    <h:inputText id="codepostal" value="#{personnelLangController.perscont.selected.codepostal}" title="#{bundle.CreatePersonnelTitle_codepostal}" />
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_ville}" for="ville" />
-                    <h:inputText id="ville" value="#{personnelController.selected.ville}" title="#{bundle.CreatePersonnelTitle_ville}" />
+                    <h:inputText id="ville" value="#{personnelLangController.perscont.selected.ville}" title="#{bundle.CreatePersonnelTitle_ville}" />
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_dateUpd}" for="dateUpd" />
-                    <h:inputText id="dateUpd" value="#{personnelController.selected.dateUpd}" title="#{bundle.CreatePersonnelTitle_dateUpd}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:inputText>
+                    <p:calendar value="#{personnelLangController.perscont.selected.dateUpd}"  mode="popup" id="dateUpd"  title="#{bundle.CreatePersonnelTitle_dateUpd}" pattern="MM/dd/yyyy HH:mm:ss" >
+                       
+                    </p:calendar>
+                    
+                    
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_dateAdd}" for="dateAdd" />
-                    <h:inputText id="dateAdd" value="#{personnelController.selected.dateAdd}" title="#{bundle.CreatePersonnelTitle_dateAdd}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:inputText>
+                    <p:calendar value="#{personnelLangController.perscont.selected.dateAdd}"  locale="ar" mode="popup" id="dateAdd"  title="#{bundle.CreatePersonnelTitle_dateAdd}" pattern="MM/dd/yyyy HH:mm:ss" >
+                       
+                    </p:calendar>
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_active}" for="active" />
-                    <h:inputText id="active" value="#{personnelController.selected.active}" title="#{bundle.CreatePersonnelTitle_active}" />
+                    <h:inputText id="active" value="#{personnelLangController.perscont.selected.active}" title="#{bundle.CreatePersonnelTitle_active}" />
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_position}" for="position" />
-                    <h:inputText id="position" value="#{personnelController.selected.position}" title="#{bundle.CreatePersonnelTitle_position}" required="true" requiredMessage="#{bundle.CreatePersonnelRequiredMessage_position}"/>
+                    <h:inputText id="position" value="#{personnelLangController.perscont.selected.position}" title="#{bundle.CreatePersonnelTitle_position}" required="true" requiredMessage="#{bundle.CreatePersonnelRequiredMessage_position}"/>
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_deleted}" for="deleted" />
-                    <h:inputText id="deleted" value="#{personnelController.selected.deleted}" title="#{bundle.CreatePersonnelTitle_deleted}" />
+                    <h:inputText id="deleted" value="#{personnelLangController.perscont.selected.deleted}" title="#{bundle.CreatePersonnelTitle_deleted}" />
                     <h:outputLabel value="#{bundle.CreatePersonnelLabel_gradeIdgrade}" for="gradeIdgrade" />
-                    <h:selectOneMenu id="gradeIdgrade" value="#{personnelController.selected.gradeIdgrade}" title="#{bundle.CreatePersonnelTitle_gradeIdgrade}" required="true" requiredMessage="#{bundle.CreatePersonnelRequiredMessage_gradeIdgrade}">
+                    <h:selectOneMenu id="gradeIdgrade" value="#{personnelLangController.perscont.selected.gradeIdgrade}" title="#{bundle.CreatePersonnelTitle_gradeIdgrade}" required="true" requiredMessage="#{bundle.CreatePersonnelRequiredMessage_gradeIdgrade}">
                         <f:selectItems value="#{gradeController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
-                <p:commandButton action="#{personnelController.create}" value="Enregistrer"  oncomplete="CreateDialog.hide()"/>
+                <p:commandButton action="#{personnelLangController.createpers()}" value="Enregistrer"  oncomplete="CreateDialog.hide()"/>
                 <br />
                 
                     </h:form>
@@ -217,7 +227,7 @@
                                     </p:column>
                                     <f:facet name="footer">  
                                         <f:facet name="footer">  
-                                            <p:commandButton   id="createButton" value="Details" icon="ui-icon-search"  
+                                            <p:commandButton   id="createButton" value="Ajouter" icon="ui-icon-search"  
                                                                oncomplete="CreateDialog.show()"/>
                                             <p:commandButton   id="viewButton" value="Details" icon="ui-icon-search"  
                                                                oncomplete="PosteDialog.show()"/>
@@ -238,8 +248,9 @@
 
                                 </p:dialog>> 
 
-
+                                
                             </h:form>
+                            
                         </h:panelGroup>
 
                     </h:form>

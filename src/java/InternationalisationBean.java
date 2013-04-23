@@ -47,8 +47,8 @@ public class InternationalisationBean {
 		
         for (Map.Entry<String, Object> entry : countryMap.entrySet()) {        
         	if(entry.getValue().toString().equals(localeStr)){
-				Locale locale = (Locale)entry.getValue();
-        		FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);        		
+				Locale localeA = (Locale)entry.getValue();
+        		FacesContext.getCurrentInstance().getViewRoot().setLocale(localeA);        		
         	}
         }
 	}
