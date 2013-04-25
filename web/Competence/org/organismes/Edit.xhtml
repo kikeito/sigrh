@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditOrganismesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditOrganismesLabel_idorganismes}" for="idorganismes" />
+                    <h:inputText id="idorganismes" value="#{organismesController.selected.idorganismes}" title="#{bundle.EditOrganismesTitle_idorganismes}" required="true" requiredMessage="#{bundle.EditOrganismesRequiredMessage_idorganismes}"/>
+                    <h:outputLabel value="#{bundle.EditOrganismesLabel_nomfr}" for="nomfr" />
+                    <h:inputText id="nomfr" value="#{organismesController.selected.nomfr}" title="#{bundle.EditOrganismesTitle_nomfr}" />
+                    <h:outputLabel value="#{bundle.EditOrganismesLabel_nomar}" for="nomar" />
+                    <h:inputText id="nomar" value="#{organismesController.selected.nomar}" title="#{bundle.EditOrganismesTitle_nomar}" />
+                    <h:outputLabel value="#{bundle.EditOrganismesLabel_statut}" for="statut" />
+                    <h:inputText id="statut" value="#{organismesController.selected.statut}" title="#{bundle.EditOrganismesTitle_statut}" />
+                    <h:outputLabel value="#{bundle.EditOrganismesLabel_adresse}" for="adresse" />
+                    <h:inputText id="adresse" value="#{organismesController.selected.adresse}" title="#{bundle.EditOrganismesTitle_adresse}" />
+                    <h:outputLabel value="#{bundle.EditOrganismesLabel_ville}" for="ville" />
+                    <h:inputText id="ville" value="#{organismesController.selected.ville}" title="#{bundle.EditOrganismesTitle_ville}" />
+                    <h:outputLabel value="#{bundle.EditOrganismesLabel_codepostale}" for="codepostale" />
+                    <h:inputText id="codepostale" value="#{organismesController.selected.codepostale}" title="#{bundle.EditOrganismesTitle_codepostale}" />
+                    <h:outputLabel value="#{bundle.EditOrganismesLabel_fax}" for="fax" />
+                    <h:inputText id="fax" value="#{organismesController.selected.fax}" title="#{bundle.EditOrganismesTitle_fax}" />
+                </h:panelGrid>
+                <h:commandLink action="#{organismesController.update}" value="#{bundle.EditOrganismesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditOrganismesViewLink}"/>
+                <br />
+                <h:commandLink action="#{organismesController.prepareList}" value="#{bundle.EditOrganismesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditOrganismesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

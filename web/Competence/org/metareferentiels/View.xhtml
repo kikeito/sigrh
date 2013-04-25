@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMetareferentielsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMetareferentielsLabel_idmetareferentiels}"/>
+                    <h:outputText value="#{metareferentielsController.selected.idmetareferentiels}" title="#{bundle.ViewMetareferentielsTitle_idmetareferentiels}"/>
+                    <h:outputText value="#{bundle.ViewMetareferentielsLabel_labelmetatfr}"/>
+                    <h:outputText value="#{metareferentielsController.selected.labelmetatfr}" title="#{bundle.ViewMetareferentielsTitle_labelmetatfr}"/>
+                    <h:outputText value="#{bundle.ViewMetareferentielsLabel_labelmetatar}"/>
+                    <h:outputText value="#{metareferentielsController.selected.labelmetatar}" title="#{bundle.ViewMetareferentielsTitle_labelmetatar}"/>
+                    <h:outputText value="#{bundle.ViewMetareferentielsLabel_metareferentielsIdmetareferentiels}"/>
+                    <h:outputText value="#{metareferentielsController.selected.metareferentielsIdmetareferentiels}" title="#{bundle.ViewMetareferentielsTitle_metareferentielsIdmetareferentiels}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{metareferentielsController.destroyAndView}" value="#{bundle.ViewMetareferentielsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMetareferentielsEditLink}"/>
+                <br />
+                <h:commandLink action="#{metareferentielsController.prepareCreate}" value="#{bundle.ViewMetareferentielsCreateLink}" />
+                <br />
+                <h:commandLink action="#{metareferentielsController.prepareList}" value="#{bundle.ViewMetareferentielsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMetareferentielsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

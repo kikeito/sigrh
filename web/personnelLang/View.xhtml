@@ -3,44 +3,67 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ViewPersonnelLangTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewPersonnelLangLabel_idpersonnelLang}"/>
-                    <h:outputText value="#{personnelLangController.selected.idpersonnelLang}" title="#{bundle.ViewPersonnelLangTitle_idpersonnelLang}"/>
-                    <h:outputText value="#{bundle.ViewPersonnelLangLabel_nom}"/>
-                    <h:outputText value="#{personnelLangController.selected.nom}" title="#{bundle.ViewPersonnelLangTitle_nom}"/>
-                    <h:outputText value="#{bundle.ViewPersonnelLangLabel_prenom}"/>
-                    <h:outputText value="#{personnelLangController.selected.prenom}" title="#{bundle.ViewPersonnelLangTitle_prenom}"/>
-                    <h:outputText value="#{bundle.ViewPersonnelLangLabel_personnelIdpersonnel}"/>
-                    <h:outputText value="#{personnelLangController.selected.personnelIdpersonnel}" title="#{bundle.ViewPersonnelLangTitle_personnelIdpersonnel}"/>
-                    <h:outputText value="#{bundle.ViewPersonnelLangLabel_langIdlang}"/>
-                    <h:outputText value="#{personnelLangController.selected.langIdlang}" title="#{bundle.ViewPersonnelLangTitle_langIdlang}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{personnelLangController.destroyAndView}" value="#{bundle.ViewPersonnelLangDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewPersonnelLangEditLink}"/>
-                <br />
-                <h:commandLink action="#{personnelLangController.prepareCreate}" value="#{bundle.ViewPersonnelLangCreateLink}" />
-                <br />
-                <h:commandLink action="#{personnelLangController.prepareList}" value="#{bundle.ViewPersonnelLangShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewPersonnelLangIndexLink}"/>
+    <h:head></h:head>
+    <h:body>
+        
+        <h:form>
+            
+                <p:panelGrid  id="updatev" columns="4">
+                    <h:outputLabel value="#{bundle.EditPersonnelLangLabel_idpersonnelLang}" for="idpersonnelLang" rendered="false" />
+                    <h:inputText id="idpersonnelLangv" value="#{personnelLangController.selectedPersonnellang.idpersonnelLang}"  rendered="fales" title="#{bundle.EditPersonnelLangTitle_idpersonnelLang}" required="true" requiredMessage="#{bundle.EditPersonnelLangRequiredMessage_idpersonnelLang}"/>
+                    <h:outputLabel value="#{bundle.EditPersonnelLangLabel_nom}" for="nom" />
+                    <h:outputText id="nomv" value="#{personnelLangController.selectedPersonnellang.nom}" title="#{bundle.EditPersonnelLangTitle_nom}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLangLabel_prenom}" for="prenom" />
+                    <h:outputText id="prenomv" value="#{personnelLangController.selectedPersonnellang.prenom}" title="#{bundle.EditPersonnelLangTitle_prenom}" />
+                    
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_idpersonnel}" for="idpersonnel" />
+                    <h:outputText id="idpersonnelv"  value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.idpersonnel}" title="#{bundle.EditPersonnelTitle_idpersonnel}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_cnrps}" for="cnrps" />
+                    <h:outputText id="cnrpsv" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.cnrps}" title="#{bundle.EditPersonnelTitle_cnrps}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_cin}" for="cin" />
+                    <h:outputText id="cinv" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.cin}" title="#{bundle.EditPersonnelTitle_cin}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_email}" for="email" />
+                    <h:outputText id="emailv" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.email}" title="#{bundle.EditPersonnelTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_specialite}" for="specialite" />
+                    <h:outputText id="specialitev" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.specialite}" title="#{bundle.EditPersonnelTitle_specialite}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_tel}" for="tel" />
+                    <h:outputText id="telv" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.tel}" title="#{bundle.EditPersonnelTitle_tel}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_fax}" for="fax" />
+                    <h:outputText id="faxv" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.fax}" title="#{bundle.EditPersonnelTitle_fax}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_addresse}" for="addresse" />
+                    <h:outputText id="addressev" value="#{personnelController.selected.addresse}" title="#{bundle.EditPersonnelTitle_addresse}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_codepostal}" for="codepostal" />
+                    <h:outputText id="codepostalv" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.codepostal}" title="#{bundle.EditPersonnelTitle_codepostal}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_ville}" for="ville" />
+                    <h:outputText id="villev" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.ville}" title="#{bundle.EditPersonnelTitle_ville}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_dateUpd}" for="dateUpd" />
+                    <h:outputText  id="dateUpdv"  value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.dateUpd}" />
+                    
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_dateAdd}" for="dateAdd" />
+                    <h:outputText  id="dateAddv"  value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.dateAdd}" />
 
-            </h:form>
-        </ui:define>
-    </ui:composition>
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_active}" for="active" />
+                    <h:outputText id="activev" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.ville}" title="#{bundle.EditPersonnelTitle_active}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_position}" for="position" />
+                    <h:outputText id="positionv" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.position}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_deleted}" for="deleted" />
+                    <h:outputText id="v" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.deleted}" title="#{bundle.EditPersonnelTitle_deleted}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_gradeIdgrade}" />
+                    <h:outputText id="gradeIdgradev" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.gradeIdgrade}" />
+                        
+                    <h:outputLabel value="#{bundle.EditPersonnelLangLabel_langIdlang}"  rendered="false" />
+                    <h:selectOneMenu id="langIdlangv" value="#{personnelLangController.selected.langIdlang}" rendered="false" title="#{bundle.EditPersonnelLangTitle_langIdlang}" required="true" requiredMessage="#{bundle.EditPersonnelLangRequiredMessage_langIdlang}">
+                        <f:selectItems value="#{langController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </p:panelGrid>
+               <p:commandButton    id="viewButtonv" value="Editer" icon="ui-icon-search"  
+                                                               oncomplete="PosteDialog.show(); PosteDialogv.hide(); "/>
+
+        </h:form>
+    </h:body>
+
 
 </html>

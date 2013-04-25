@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditReferentielcompetenceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditReferentielcompetenceLabel_idreferentielcompetence}" for="idreferentielcompetence" />
+                    <h:inputText id="idreferentielcompetence" value="#{referentielcompetenceController.selected.idreferentielcompetence}" title="#{bundle.EditReferentielcompetenceTitle_idreferentielcompetence}" required="true" requiredMessage="#{bundle.EditReferentielcompetenceRequiredMessage_idreferentielcompetence}"/>
+                    <h:outputLabel value="#{bundle.EditReferentielcompetenceLabel_valeurfr}" for="valeurfr" />
+                    <h:inputText id="valeurfr" value="#{referentielcompetenceController.selected.valeurfr}" title="#{bundle.EditReferentielcompetenceTitle_valeurfr}" />
+                    <h:outputLabel value="#{bundle.EditReferentielcompetenceLabel_valeurar}" for="valeurar" />
+                    <h:inputText id="valeurar" value="#{referentielcompetenceController.selected.valeurar}" title="#{bundle.EditReferentielcompetenceTitle_valeurar}" />
+                    <h:outputLabel value="#{bundle.EditReferentielcompetenceLabel_referentielcompetenceIdreferentielcompetence}" for="referentielcompetenceIdreferentielcompetence" />
+                    <h:selectOneMenu id="referentielcompetenceIdreferentielcompetence" value="#{referentielcompetenceController.selected.referentielcompetenceIdreferentielcompetence}" title="#{bundle.EditReferentielcompetenceTitle_referentielcompetenceIdreferentielcompetence}" >
+                        <f:selectItems value="#{referentielcompetenceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditReferentielcompetenceLabel_modelreferentielsIdmodelreferentiels}" for="modelreferentielsIdmodelreferentiels" />
+                    <h:selectOneMenu id="modelreferentielsIdmodelreferentiels" value="#{referentielcompetenceController.selected.modelreferentielsIdmodelreferentiels}" title="#{bundle.EditReferentielcompetenceTitle_modelreferentielsIdmodelreferentiels}" required="true" requiredMessage="#{bundle.EditReferentielcompetenceRequiredMessage_modelreferentielsIdmodelreferentiels}">
+                        <f:selectItems value="#{modelreferentielsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditReferentielcompetenceLabel_metareferentielsIdmetareferentiels}" for="metareferentielsIdmetareferentiels" />
+                    <h:selectOneMenu id="metareferentielsIdmetareferentiels" value="#{referentielcompetenceController.selected.metareferentielsIdmetareferentiels}" title="#{bundle.EditReferentielcompetenceTitle_metareferentielsIdmetareferentiels}" >
+                        <f:selectItems value="#{metareferentielsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{referentielcompetenceController.update}" value="#{bundle.EditReferentielcompetenceSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditReferentielcompetenceViewLink}"/>
+                <br />
+                <h:commandLink action="#{referentielcompetenceController.prepareList}" value="#{bundle.EditReferentielcompetenceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditReferentielcompetenceIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

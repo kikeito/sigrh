@@ -18,11 +18,18 @@ public class ParamsDetailsFacade extends AbstractFacade<ParamsDetails> {
     @PersistenceContext(unitName = "GestionCarrierePU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public ParamsDetailsFacade() {
         super(ParamsDetails.class);
     }

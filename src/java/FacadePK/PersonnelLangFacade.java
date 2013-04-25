@@ -18,11 +18,18 @@ public class PersonnelLangFacade extends AbstractFacade<PersonnelLang> {
     @PersistenceContext(unitName = "GestionCarrierePU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public PersonnelLangFacade() {
         super(PersonnelLang.class);
     }

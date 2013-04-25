@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateModelreferentielsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateModelreferentielsLabel_idmodelreferentiels}" for="idmodelreferentiels" />
+                    <h:inputText id="idmodelreferentiels" value="#{modelreferentielsController.selected.idmodelreferentiels}" title="#{bundle.CreateModelreferentielsTitle_idmodelreferentiels}" required="true" requiredMessage="#{bundle.CreateModelreferentielsRequiredMessage_idmodelreferentiels}"/>
+                    <h:outputLabel value="#{bundle.CreateModelreferentielsLabel_nommodelref}" for="nommodelref" />
+                    <h:inputText id="nommodelref" value="#{modelreferentielsController.selected.nommodelref}" title="#{bundle.CreateModelreferentielsTitle_nommodelref}" />
+                    <h:outputLabel value="#{bundle.CreateModelreferentielsLabel_nommodelrefar}" for="nommodelrefar" />
+                    <h:inputText id="nommodelrefar" value="#{modelreferentielsController.selected.nommodelrefar}" title="#{bundle.CreateModelreferentielsTitle_nommodelrefar}" />
+                    <h:outputLabel value="#{bundle.CreateModelreferentielsLabel_description}" for="description" />
+                    <h:inputTextarea rows="4" cols="30" id="description" value="#{modelreferentielsController.selected.description}" title="#{bundle.CreateModelreferentielsTitle_description}" />
+                    <h:outputLabel value="#{bundle.CreateModelreferentielsLabel_descriptionar}" for="descriptionar" />
+                    <h:inputTextarea rows="4" cols="30" id="descriptionar" value="#{modelreferentielsController.selected.descriptionar}" title="#{bundle.CreateModelreferentielsTitle_descriptionar}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{modelreferentielsController.create}" value="#{bundle.CreateModelreferentielsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{modelreferentielsController.prepareList}" value="#{bundle.CreateModelreferentielsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateModelreferentielsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

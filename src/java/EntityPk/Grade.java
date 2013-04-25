@@ -41,39 +41,74 @@ public class Grade implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gradeIdgrade")
     private Collection<GradeLang> gradeLangCollection;
 
+    /**
+     *
+     */
     public Grade() {
     }
 
+    /**
+     *
+     * @param idgrade
+     */
     public Grade(Integer idgrade) {
         this.idgrade = idgrade;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdgrade() {
         return idgrade;
     }
 
+    /**
+     *
+     * @param idgrade
+     */
     public void setIdgrade(Integer idgrade) {
         this.idgrade = idgrade;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Personnel> getPersonnelCollection() {
         return personnelCollection;
     }
 
+    /**
+     *
+     * @param personnelCollection
+     */
     public void setPersonnelCollection(Collection<Personnel> personnelCollection) {
         this.personnelCollection = personnelCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<GradeLang> getGradeLangCollection() {
         return gradeLangCollection;
     }
 
+    /**
+     *
+     * @param gradeLangCollection
+     */
     public void setGradeLangCollection(Collection<GradeLang> gradeLangCollection) {
         this.gradeLangCollection = gradeLangCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -81,6 +116,11 @@ public class Grade implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -94,6 +134,10 @@ public class Grade implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "EntityPk.Grade[ idgrade=" + idgrade + " ]";

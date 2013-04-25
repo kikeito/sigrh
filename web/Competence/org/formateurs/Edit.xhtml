@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFormateursTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFormateursLabel_idformateurs}" for="idformateurs" />
+                    <h:inputText id="idformateurs" value="#{formateursController.selected.idformateurs}" title="#{bundle.EditFormateursTitle_idformateurs}" required="true" requiredMessage="#{bundle.EditFormateursRequiredMessage_idformateurs}"/>
+                    <h:outputLabel value="#{bundle.EditFormateursLabel_nomar}" for="nomar" />
+                    <h:inputText id="nomar" value="#{formateursController.selected.nomar}" title="#{bundle.EditFormateursTitle_nomar}" />
+                    <h:outputLabel value="#{bundle.EditFormateursLabel_nomfr}" for="nomfr" />
+                    <h:inputText id="nomfr" value="#{formateursController.selected.nomfr}" title="#{bundle.EditFormateursTitle_nomfr}" />
+                    <h:outputLabel value="#{bundle.EditFormateursLabel_adresse}" for="adresse" />
+                    <h:inputText id="adresse" value="#{formateursController.selected.adresse}" title="#{bundle.EditFormateursTitle_adresse}" />
+                    <h:outputLabel value="#{bundle.EditFormateursLabel_tel}" for="tel" />
+                    <h:inputText id="tel" value="#{formateursController.selected.tel}" title="#{bundle.EditFormateursTitle_tel}" />
+                </h:panelGrid>
+                <h:commandLink action="#{formateursController.update}" value="#{bundle.EditFormateursSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFormateursViewLink}"/>
+                <br />
+                <h:commandLink action="#{formateursController.prepareList}" value="#{bundle.EditFormateursShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFormateursIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

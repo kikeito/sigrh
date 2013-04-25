@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCatalogueformationsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCatalogueformationsEmpty}" rendered="#{catalogueformationsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{catalogueformationsController.items.rowCount > 0}">
+                    <h:outputText value="#{catalogueformationsController.pagination.pageFirstItem + 1}..#{catalogueformationsController.pagination.pageLastItem + 1}/#{catalogueformationsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{catalogueformationsController.previous}" value="#{bundle.Previous} #{catalogueformationsController.pagination.pageSize}" rendered="#{catalogueformationsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{catalogueformationsController.next}" value="#{bundle.Next} #{catalogueformationsController.pagination.pageSize}" rendered="#{catalogueformationsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{catalogueformationsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCatalogueformationsTitle_idcatalogueformations}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idcatalogueformations}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCatalogueformationsTitle_formationsIdformations}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.formationsIdformations}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{catalogueformationsController.prepareView}" value="#{bundle.ListCatalogueformationsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{catalogueformationsController.prepareEdit}" value="#{bundle.ListCatalogueformationsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{catalogueformationsController.destroy}" value="#{bundle.ListCatalogueformationsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{catalogueformationsController.prepareCreate}" value="#{bundle.ListCatalogueformationsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCatalogueformationsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

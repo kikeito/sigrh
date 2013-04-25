@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCataloguerefformationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCataloguerefformationLabel_idcataloguerefformation}" for="idcataloguerefformation" />
+                    <h:inputText id="idcataloguerefformation" value="#{cataloguerefformationController.selected.idcataloguerefformation}" title="#{bundle.CreateCataloguerefformationTitle_idcataloguerefformation}" required="true" requiredMessage="#{bundle.CreateCataloguerefformationRequiredMessage_idcataloguerefformation}"/>
+                    <h:outputLabel value="#{bundle.CreateCataloguerefformationLabel_referentielcompetenceIdreferentielcompetence}" for="referentielcompetenceIdreferentielcompetence" />
+                    <h:selectOneMenu id="referentielcompetenceIdreferentielcompetence" value="#{cataloguerefformationController.selected.referentielcompetenceIdreferentielcompetence}" title="#{bundle.CreateCataloguerefformationTitle_referentielcompetenceIdreferentielcompetence}" required="true" requiredMessage="#{bundle.CreateCataloguerefformationRequiredMessage_referentielcompetenceIdreferentielcompetence}">
+                        <f:selectItems value="#{referentielcompetenceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCataloguerefformationLabel_catalogueformationsIdcatalogueformations}" for="catalogueformationsIdcatalogueformations" />
+                    <h:selectOneMenu id="catalogueformationsIdcatalogueformations" value="#{cataloguerefformationController.selected.catalogueformationsIdcatalogueformations}" title="#{bundle.CreateCataloguerefformationTitle_catalogueformationsIdcatalogueformations}" required="true" requiredMessage="#{bundle.CreateCataloguerefformationRequiredMessage_catalogueformationsIdcatalogueformations}">
+                        <f:selectItems value="#{catalogueformationsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cataloguerefformationController.create}" value="#{bundle.CreateCataloguerefformationSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{cataloguerefformationController.prepareList}" value="#{bundle.CreateCataloguerefformationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCataloguerefformationIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

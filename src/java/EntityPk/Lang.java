@@ -65,102 +65,198 @@ public class Lang implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "langIdlang")
     private Collection<ColumnsLang> columnsLangCollection;
 
+    /**
+     *
+     */
     public Lang() {
     }
 
+    /**
+     *
+     * @param idlang
+     */
     public Lang(Integer idlang) {
         this.idlang = idlang;
     }
 
+    /**
+     *
+     * @param idlang
+     * @param isoCode
+     */
     public Lang(Integer idlang, String isoCode) {
         this.idlang = idlang;
         this.isoCode = isoCode;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdlang() {
         return idlang;
     }
 
+    /**
+     *
+     * @param idlang
+     */
     public void setIdlang(Integer idlang) {
         this.idlang = idlang;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIsoCode() {
         return isoCode;
     }
 
+    /**
+     *
+     * @param isoCode
+     */
     public void setIsoCode(String isoCode) {
         this.isoCode = isoCode;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIntitule() {
         return intitule;
     }
 
+    /**
+     *
+     * @param intitule
+     */
     public void setIntitule(String intitule) {
         this.intitule = intitule;
     }
 
+    /**
+     *
+     * @return
+     */
     public Short getActive() {
         return active;
     }
 
+    /**
+     *
+     * @param active
+     */
     public void setActive(Short active) {
         this.active = active;
     }
 
+    /**
+     *
+     * @return
+     */
     public Short getAtrdefault() {
         return atrdefault;
     }
 
+    /**
+     *
+     * @param atrdefault
+     */
     public void setAtrdefault(Short atrdefault) {
         this.atrdefault = atrdefault;
     }
 
+    /**
+     *
+     * @return
+     */
     public Short getDeleted() {
         return deleted;
     }
 
+    /**
+     *
+     * @param deleted
+     */
     public void setDeleted(Short deleted) {
         this.deleted = deleted;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<ParamsLang> getParamsLangCollection() {
         return paramsLangCollection;
     }
 
+    /**
+     *
+     * @param paramsLangCollection
+     */
     public void setParamsLangCollection(Collection<ParamsLang> paramsLangCollection) {
         this.paramsLangCollection = paramsLangCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<GradeLang> getGradeLangCollection() {
         return gradeLangCollection;
     }
 
+    /**
+     *
+     * @param gradeLangCollection
+     */
     public void setGradeLangCollection(Collection<GradeLang> gradeLangCollection) {
         this.gradeLangCollection = gradeLangCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<PersonnelLang> getPersonnelLangCollection() {
         return personnelLangCollection;
     }
 
+    /**
+     *
+     * @param personnelLangCollection
+     */
     public void setPersonnelLangCollection(Collection<PersonnelLang> personnelLangCollection) {
         this.personnelLangCollection = personnelLangCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<ColumnsLang> getColumnsLangCollection() {
         return columnsLangCollection;
     }
 
+    /**
+     *
+     * @param columnsLangCollection
+     */
     public void setColumnsLangCollection(Collection<ColumnsLang> columnsLangCollection) {
         this.columnsLangCollection = columnsLangCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -168,6 +264,11 @@ public class Lang implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -181,6 +282,10 @@ public class Lang implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "EntityPk.Lang[ idlang=" + idlang + " ]";

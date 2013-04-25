@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFormateurdeformationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFormateurdeformationLabel_idformateurdeformation}" for="idformateurdeformation" />
+                    <h:inputText id="idformateurdeformation" value="#{formateurdeformationController.selected.idformateurdeformation}" title="#{bundle.EditFormateurdeformationTitle_idformateurdeformation}" required="true" requiredMessage="#{bundle.EditFormateurdeformationRequiredMessage_idformateurdeformation}"/>
+                    <h:outputLabel value="#{bundle.EditFormateurdeformationLabel_fournisseursformationIdfournisseursformation}" for="fournisseursformationIdfournisseursformation" />
+                    <h:selectOneMenu id="fournisseursformationIdfournisseursformation" value="#{formateurdeformationController.selected.fournisseursformationIdfournisseursformation}" title="#{bundle.EditFormateurdeformationTitle_fournisseursformationIdfournisseursformation}" required="true" requiredMessage="#{bundle.EditFormateurdeformationRequiredMessage_fournisseursformationIdfournisseursformation}">
+                        <f:selectItems value="#{fournisseursformationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFormateurdeformationLabel_formateursIdformateurs}" for="formateursIdformateurs" />
+                    <h:selectOneMenu id="formateursIdformateurs" value="#{formateurdeformationController.selected.formateursIdformateurs}" title="#{bundle.EditFormateurdeformationTitle_formateursIdformateurs}" required="true" requiredMessage="#{bundle.EditFormateurdeformationRequiredMessage_formateursIdformateurs}">
+                        <f:selectItems value="#{formateursController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{formateurdeformationController.update}" value="#{bundle.EditFormateurdeformationSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFormateurdeformationViewLink}"/>
+                <br />
+                <h:commandLink action="#{formateurdeformationController.prepareList}" value="#{bundle.EditFormateurdeformationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFormateurdeformationIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

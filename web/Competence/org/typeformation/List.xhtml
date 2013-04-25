@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTypeformationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTypeformationEmpty}" rendered="#{typeformationController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{typeformationController.items.rowCount > 0}">
+                    <h:outputText value="#{typeformationController.pagination.pageFirstItem + 1}..#{typeformationController.pagination.pageLastItem + 1}/#{typeformationController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{typeformationController.previous}" value="#{bundle.Previous} #{typeformationController.pagination.pageSize}" rendered="#{typeformationController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{typeformationController.next}" value="#{bundle.Next} #{typeformationController.pagination.pageSize}" rendered="#{typeformationController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{typeformationController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTypeformationTitle_idtypeformation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtypeformation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTypeformationTitle_labeltypeformationfr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.labeltypeformationfr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTypeformationTitle_labeltypeformationar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.labeltypeformationar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTypeformationTitle_descriptiontypeform}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descriptiontypeform}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTypeformationTitle_descritptiontypeformar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descritptiontypeformar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{typeformationController.prepareView}" value="#{bundle.ListTypeformationViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{typeformationController.prepareEdit}" value="#{bundle.ListTypeformationEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{typeformationController.destroy}" value="#{bundle.ListTypeformationDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{typeformationController.prepareCreate}" value="#{bundle.ListTypeformationCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTypeformationIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

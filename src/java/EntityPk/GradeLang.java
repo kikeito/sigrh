@@ -46,45 +46,88 @@ public class GradeLang implements Serializable {
     @ManyToOne(optional = false)
     private Grade gradeIdgrade;
 
+    /**
+     *
+     */
     public GradeLang() {
     }
 
+    /**
+     *
+     * @param idgradeLang
+     */
     public GradeLang(Integer idgradeLang) {
         this.idgradeLang = idgradeLang;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdgradeLang() {
         return idgradeLang;
     }
 
+    /**
+     *
+     * @param idgradeLang
+     */
     public void setIdgradeLang(Integer idgradeLang) {
         this.idgradeLang = idgradeLang;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIntitule() {
         return intitule;
     }
 
+    /**
+     *
+     * @param intitule
+     */
     public void setIntitule(String intitule) {
         this.intitule = intitule;
     }
 
+    /**
+     *
+     * @return
+     */
     public Lang getLangIdlang() {
         return langIdlang;
     }
 
+    /**
+     *
+     * @param langIdlang
+     */
     public void setLangIdlang(Lang langIdlang) {
         this.langIdlang = langIdlang;
     }
 
+    /**
+     *
+     * @return
+     */
     public Grade getGradeIdgrade() {
         return gradeIdgrade;
     }
 
+    /**
+     *
+     * @param gradeIdgrade
+     */
     public void setGradeIdgrade(Grade gradeIdgrade) {
         this.gradeIdgrade = gradeIdgrade;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -92,6 +135,11 @@ public class GradeLang implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -105,6 +153,10 @@ public class GradeLang implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "EntityPk.GradeLang[ idgradeLang=" + idgradeLang + " ]";

@@ -1,34 +1,104 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-        <br />
-        <h:link outcome="/columnsLang/List" value="Show All ColumnsLang Items"/>
-        <br />
-        <h:link outcome="/grade/List" value="Show All Grade Items"/>
-        <br />
-        <h:link outcome="/gradeLang/List" value="Show All GradeLang Items"/>
-        <br />
-        <h:link outcome="/lang/List" value="Show All Lang Items"/>
-        <br />
-        <h:link outcome="/params/List" value="Show All Params Items"/>
-        <br />
-        <h:link outcome="/paramsDetails/List" value="Show All ParamsDetails Items"/>
-        <br />
-        <h:link outcome="/paramsLang/List" value="Show All ParamsLang Items"/>
-        <br />
-        <h:link outcome="/personnel/List" value="Show All Personnel Items"/>
-        <br />
-        <h:link outcome="/personnelLang/List" value="Show All PersonnelLang Items"/>
+        
+        
+        <p:menubar>
+            <p:menuitem   value="Gestion emplye" outcome="/personnelLang/List"/>
+            
+            <p:submenu  label="Gestion Organigrammes">
+                <p:menuitem value="Organismes" outcome="/Competence/org/organigrames/List" />
+                <p:menuitem value="Organigrammes" outcome="/Competence/org/organismes/List" />
+                <p:menuitem value="Postes"  outcome="/Competence/org/postes/List" />
+                <p:menuitem value="Affectation des Postes"  outcome="/Competence/org/haveposte/List" />
+                
+            </p:submenu>
+            <p:submenu label="Gestion de Competences" />
+            <p:submenu label="Gestion de Formations" />
+            <p:submenu label="Gestion de Admenistratif" />
+            
+        </p:menubar>
+        
+        <h:form>
+            <p:menu >
+        <p:menuitem outcome="/columnsLang/List" value="Show All ColumnsLang Items"/>
+        
+        <p:menuitem outcome="/grade/List" value="Show All Grade Items"/>
+        
+       <p:menuitem outcome="/gradeLang/List" value="Show All GradeLang Items"/>
+       
+        <p:menuitem outcome="/lang/List" value="Show All Lang Items"/>
+      
+        <p:menuitem outcome="/params/List" value="Show All Params Items"/>
+        
+        <p:menuitem outcome="/paramsDetails/List" value="Show All ParamsDetails Items"/>
+       
+        <p:menuitem outcome="/paramsLang/List" value="Show All ParamsLang Items"/>
+       
+       <p:menuitem outcome="/personnel/List" value="Show All Personnel Items"/>
+       
+        <p:menuitem outcome="/personnelLang/List" value="Show All PersonnelLang Items"/>
+        
+        <p:menuitem outcome="/Competence/org/attributionrefcomp/List" value="Show All Attributionrefcomp Items"/>
+        
+        <p:menuitem outcome="/Competence/org/attributions/List" value="Show All Attributions Items"/>
+      
+        <p:menuitem outcome="/Competence/org/catalogueformations/List" value="Show All Catalogueformations Items"/>
+        
+       <p:menuitem outcome="/Competence/org/cataloguerefformation/List" value="Show All Cataloguerefformation Items"/>
+      
+       <p:menuitem outcome="/Competence/org/formateurdeformation/List" value="Show All Formateurdeformation Items"/>
+        
+        <p:menuitem outcome="/Competence/org/formateurs/List" value="Show All Formateurs Items"/>
+        
+        <p:menuitem outcome="/Competence/org/formations/List" value="Show All Formations Items"/>
+       
+        <p:menuitem outcome="/Competence/org/fournisseurs/List" value="Show All Fournisseurs Items"/>
+        
+        <p:menuitem outcome="/Competence/org/fournisseursformation/List" value="Show All Fournisseursformation Items"/>
+        
+        <p:menuitem outcome="/Competence/org/haveposte/List" value="Show All Haveposte Items"/>
+        
+        <p:menuitem outcome="/Competence/org/metareferentiels/List" value="Show All Metareferentiels Items"/>
+        
+        <p:menuitem outcome="/Competence/org/modelreferentiels/List" value="Show All Modelreferentiels Items"/>
+        
+        <p:menuitem outcome="/Competence/org/organigrames/List" value="Show All Organigrames Items"/>
+        
+        <p:menuitem outcome="/Competence/org/organismes/List" value="Show All Organismes Items"/>
+        
+       <p:menuitem outcome="/Competence/org/postes/List" value="Show All Postes Items"/>
+        
+        <p:menuitem outcome="/Competence/org/referentielcompetence/List" value="Show All Referentielcompetence Items"/>
+       
+        <p:menuitem outcome="/Competence/org/typeformation/List" value="Show All Typeformation Items"/>
+        </p:menu>
+        </h:form>
     </h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

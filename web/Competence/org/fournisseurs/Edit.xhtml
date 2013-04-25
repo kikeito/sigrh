@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFournisseursTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFournisseursLabel_idfournisseurs}" for="idfournisseurs" />
+                    <h:inputText id="idfournisseurs" value="#{fournisseursController.selected.idfournisseurs}" title="#{bundle.EditFournisseursTitle_idfournisseurs}" required="true" requiredMessage="#{bundle.EditFournisseursRequiredMessage_idfournisseurs}"/>
+                    <h:outputLabel value="#{bundle.EditFournisseursLabel_nomar}" for="nomar" />
+                    <h:inputText id="nomar" value="#{fournisseursController.selected.nomar}" title="#{bundle.EditFournisseursTitle_nomar}" />
+                    <h:outputLabel value="#{bundle.EditFournisseursLabel_nomfr}" for="nomfr" />
+                    <h:inputText id="nomfr" value="#{fournisseursController.selected.nomfr}" title="#{bundle.EditFournisseursTitle_nomfr}" />
+                    <h:outputLabel value="#{bundle.EditFournisseursLabel_adresse}" for="adresse" />
+                    <h:inputText id="adresse" value="#{fournisseursController.selected.adresse}" title="#{bundle.EditFournisseursTitle_adresse}" />
+                    <h:outputLabel value="#{bundle.EditFournisseursLabel_tel}" for="tel" />
+                    <h:inputText id="tel" value="#{fournisseursController.selected.tel}" title="#{bundle.EditFournisseursTitle_tel}" />
+                    <h:outputLabel value="#{bundle.EditFournisseursLabel_domaine}" for="domaine" />
+                    <h:inputText id="domaine" value="#{fournisseursController.selected.domaine}" title="#{bundle.EditFournisseursTitle_domaine}" />
+                    <h:outputLabel value="#{bundle.EditFournisseursLabel_statutguridique}" for="statutguridique" />
+                    <h:inputText id="statutguridique" value="#{fournisseursController.selected.statutguridique}" title="#{bundle.EditFournisseursTitle_statutguridique}" />
+                </h:panelGrid>
+                <h:commandLink action="#{fournisseursController.update}" value="#{bundle.EditFournisseursSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFournisseursViewLink}"/>
+                <br />
+                <h:commandLink action="#{fournisseursController.prepareList}" value="#{bundle.EditFournisseursShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFournisseursIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

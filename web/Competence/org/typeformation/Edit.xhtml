@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTypeformationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTypeformationLabel_idtypeformation}" for="idtypeformation" />
+                    <h:inputText id="idtypeformation" value="#{typeformationController.selected.idtypeformation}" title="#{bundle.EditTypeformationTitle_idtypeformation}" required="true" requiredMessage="#{bundle.EditTypeformationRequiredMessage_idtypeformation}"/>
+                    <h:outputLabel value="#{bundle.EditTypeformationLabel_labeltypeformationfr}" for="labeltypeformationfr" />
+                    <h:inputText id="labeltypeformationfr" value="#{typeformationController.selected.labeltypeformationfr}" title="#{bundle.EditTypeformationTitle_labeltypeformationfr}" />
+                    <h:outputLabel value="#{bundle.EditTypeformationLabel_labeltypeformationar}" for="labeltypeformationar" />
+                    <h:inputText id="labeltypeformationar" value="#{typeformationController.selected.labeltypeformationar}" title="#{bundle.EditTypeformationTitle_labeltypeformationar}" />
+                    <h:outputLabel value="#{bundle.EditTypeformationLabel_descriptiontypeform}" for="descriptiontypeform" />
+                    <h:inputTextarea rows="4" cols="30" id="descriptiontypeform" value="#{typeformationController.selected.descriptiontypeform}" title="#{bundle.EditTypeformationTitle_descriptiontypeform}" />
+                    <h:outputLabel value="#{bundle.EditTypeformationLabel_descritptiontypeformar}" for="descritptiontypeformar" />
+                    <h:inputTextarea rows="4" cols="30" id="descritptiontypeformar" value="#{typeformationController.selected.descritptiontypeformar}" title="#{bundle.EditTypeformationTitle_descritptiontypeformar}" />
+                </h:panelGrid>
+                <h:commandLink action="#{typeformationController.update}" value="#{bundle.EditTypeformationSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTypeformationViewLink}"/>
+                <br />
+                <h:commandLink action="#{typeformationController.prepareList}" value="#{bundle.EditTypeformationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTypeformationIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFormateursTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFormateursLabel_idformateurs}"/>
+                    <h:outputText value="#{formateursController.selected.idformateurs}" title="#{bundle.ViewFormateursTitle_idformateurs}"/>
+                    <h:outputText value="#{bundle.ViewFormateursLabel_nomar}"/>
+                    <h:outputText value="#{formateursController.selected.nomar}" title="#{bundle.ViewFormateursTitle_nomar}"/>
+                    <h:outputText value="#{bundle.ViewFormateursLabel_nomfr}"/>
+                    <h:outputText value="#{formateursController.selected.nomfr}" title="#{bundle.ViewFormateursTitle_nomfr}"/>
+                    <h:outputText value="#{bundle.ViewFormateursLabel_adresse}"/>
+                    <h:outputText value="#{formateursController.selected.adresse}" title="#{bundle.ViewFormateursTitle_adresse}"/>
+                    <h:outputText value="#{bundle.ViewFormateursLabel_tel}"/>
+                    <h:outputText value="#{formateursController.selected.tel}" title="#{bundle.ViewFormateursTitle_tel}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{formateursController.destroyAndView}" value="#{bundle.ViewFormateursDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFormateursEditLink}"/>
+                <br />
+                <h:commandLink action="#{formateursController.prepareCreate}" value="#{bundle.ViewFormateursCreateLink}" />
+                <br />
+                <h:commandLink action="#{formateursController.prepareList}" value="#{bundle.ViewFormateursShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFormateursIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

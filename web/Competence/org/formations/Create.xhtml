@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFormationsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFormationsLabel_idformations}" for="idformations" />
+                    <h:inputText id="idformations" value="#{formationsController.selected.idformations}" title="#{bundle.CreateFormationsTitle_idformations}" required="true" requiredMessage="#{bundle.CreateFormationsRequiredMessage_idformations}"/>
+                    <h:outputLabel value="#{bundle.CreateFormationsLabel_dateDebut}" for="dateDebut" />
+                    <h:inputText id="dateDebut" value="#{formationsController.selected.dateDebut}" title="#{bundle.CreateFormationsTitle_dateDebut}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateFormationsLabel_dateFin}" for="dateFin" />
+                    <h:inputText id="dateFin" value="#{formationsController.selected.dateFin}" title="#{bundle.CreateFormationsTitle_dateFin}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateFormationsLabel_typeformationIdtypeformation}" for="typeformationIdtypeformation" />
+                    <h:selectOneMenu id="typeformationIdtypeformation" value="#{formationsController.selected.typeformationIdtypeformation}" title="#{bundle.CreateFormationsTitle_typeformationIdtypeformation}" required="true" requiredMessage="#{bundle.CreateFormationsRequiredMessage_typeformationIdtypeformation}">
+                        <f:selectItems value="#{typeformationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{formationsController.create}" value="#{bundle.CreateFormationsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{formationsController.prepareList}" value="#{bundle.CreateFormationsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFormationsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

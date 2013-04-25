@@ -21,6 +21,10 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
+/**
+ *
+ * @author HAMED
+ */
 @ManagedBean(name = "personnelController")
 @SessionScoped
 public class PersonnelController implements Serializable {
@@ -37,6 +41,10 @@ public class PersonnelController implements Serializable {
     private List<Personnel> perso= new ArrayList();
      private List<PesonnelList> listprslist= new ArrayList();
 
+    /**
+     *
+     * @return
+     */
     public List<PesonnelList> getListprslist() {
         perso= ejbFacade.findAll();
         Iterator iterator= perso.iterator();
@@ -46,13 +54,24 @@ public class PersonnelController implements Serializable {
         return listprslist;
     }
 
+    /**
+     *
+     * @param listprslist
+     */
     public void setListprslist(List<PesonnelList> listprslist) {
         this.listprslist = listprslist;
     }
 
+    /**
+     *
+     */
     public PersonnelController() {
     }
 
+    /**
+     *
+     * @return
+     */
     public Personnel getSelected() {
         if (current == null) {
             current = new Personnel();
@@ -65,6 +84,10 @@ public class PersonnelController implements Serializable {
         return ejbFacade;
     }
 
+    /**
+     *
+     * @return
+     */
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -82,23 +105,39 @@ public class PersonnelController implements Serializable {
         return pagination;
     }
 
+    /**
+     *
+     * @return
+     */
     public String prepareList() {
         recreateModel();
         return "List";
     }
 
+    /**
+     *
+     * @return
+     */
     public String prepareView() {
         current = (Personnel) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
+    /**
+     *
+     * @return
+     */
     public String prepareCreate() {
         current = new Personnel();
         selectedItemIndex = -1;
         return "null";
     }
 
+    /**
+     *
+     * @return
+     */
     public String create() {
         try {
             getFacade().create(current);
@@ -110,12 +149,20 @@ public class PersonnelController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String prepareEdit() {
         current = (Personnel) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
+    /**
+     *
+     * @return
+     */
     public String update() {
         try {
             getFacade().edit(current);
@@ -127,6 +174,10 @@ public class PersonnelController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String destroy() {
         current = (Personnel) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -136,6 +187,10 @@ public class PersonnelController implements Serializable {
         return "List";
     }
 
+    /**
+     *
+     * @return
+     */
     public String destroyAndView() {
         performDestroy();
         recreateModel();
@@ -148,6 +203,10 @@ public class PersonnelController implements Serializable {
             return "List";
         }
     }
+    /**
+     *
+     * @param p
+     */
     public void destroyp(Personnel p) {
         try {
             getFacade().remove(p);
@@ -180,6 +239,10 @@ public class PersonnelController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public DataModel getItems() {
         if (items == null) {
             items = getPagination().createPageDataModel();
@@ -195,29 +258,55 @@ public class PersonnelController implements Serializable {
         pagination = null;
     }
 
+    /**
+     *
+     * @return
+     */
     public String next() {
         getPagination().nextPage();
         recreateModel();
         return "List";
     }
 
+    /**
+     *
+     * @return
+     */
     public String previous() {
         getPagination().previousPage();
         recreateModel();
         return "List";
     }
 
+    /**
+     *
+     * @return
+     */
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
 
+    /**
+     *
+     * @return
+     */
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
+    /**
+     *
+     */
     @FacesConverter(forClass = Personnel.class)
     public static class PersonnelControllerConverter implements Converter {
 
+        /**
+         *
+         * @param facesContext
+         * @param component
+         * @param value
+         * @return
+         */
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
@@ -239,6 +328,13 @@ public class PersonnelController implements Serializable {
             return sb.toString();
         }
 
+        /**
+         *
+         * @param facesContext
+         * @param component
+         * @param object
+         * @return
+         */
         public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
             if (object == null) {
                 return null;

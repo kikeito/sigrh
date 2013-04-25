@@ -3,48 +3,82 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
 
     <h:body>
-        <h1>
-            <ui:insert name="title">Default Title</ui:insert>
-        </h1>
-        <p>
-            <ui:insert name="body">
-                Default Body
-                <p:layout fullPage="true">  
-  
-    <p:ajax event="toggle" listener="#{layoutBean.handleToggle}" update="msg" />  
-    <p:ajax event="close" listener="#{layoutBean.handleClose}" update="msg" />  
-  
-    <p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">  
-        <h:outputText value="North unit content." />  
-    </p:layoutUnit>  
-  
-    <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">  
-        <h:outputText value="South unit content." />  
-    </p:layoutUnit>  
-  
-    <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">  
-        <h:outputText value="West unit content." />  
-    </p:layoutUnit>  
-  
-    <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true">  
-        <h:outputText value="Right unit content." />  
-    </p:layoutUnit>  
-  
-    <p:layoutUnit position="center">  
-        
-    </p:layoutUnit>  
-  
-</p:layout>  
-                         
-            </ui:insert>
-        </p>
+        <h:form>
+
+        </h:form>
+        <ui:insert name="dialogs"></ui:insert>
+
+        <p:layout fullPage="true">
+
+            <p:layoutUnit  position="north" size="100"  resizable="true" closable="true" collapsible="true">
+                <h:form>
+
+
+                    <p:panelGrid   style=" margin-right: 0%"  columns="3">
+                        <h:outputText value="#{bundle.Mytext}" />
+
+                        <h:selectOneMenu  value="#{internationalisationBean.locale}" onchange="submit()"
+                                          valueChangeListener="#{internationalisationBean.localeChanged}" >
+
+                            <f:selectItems value="#{internationalisationBean.countries}" /> 
+                        </h:selectOneMenu>
+
+                    </p:panelGrid>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100"  resizable="true" closable="true" collapsible="true">
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west"  >
+                <p:panelMenu  >
+                    <p:submenu  label="Index">
+                        <p:menuitem   value="index" outcome="/index"/>
+                    </p:submenu>
+                    <p:submenu  label="Gestion Employees">
+                        <p:menuitem   value="Gestion emplyees" outcome="/personnelLang/List"/>
+                    </p:submenu>
+                    <p:submenu   label="Gestion Organigrammes">
+                        <p:menuitem value="Organismes" outcome="/Competence/org/organigrames/List" />
+                        <p:menuitem value="Organigrammes" outcome="/Competence/org/organismes/List" />
+                        <p:menuitem value="Postes"  outcome="/Competence/org/postes/List" />
+                        <p:menuitem value="Affectation des Postes"  outcome="/Competence/org/haveposte/List" />
+
+                    </p:submenu>
+                    <p:submenu label="Gestion de Competences" />
+                    <p:submenu label="Gestion de Formations" />
+                    <p:submenu label="Gestion de Admenistratif" />
+
+                </p:panelMenu>
+            </p:layoutUnit>
+
+
+
+            <p:layoutUnit position="center">
+
+
+                <ui:insert name="body">
+                </ui:insert>
+            </p:layoutUnit>
+
+        </p:layout>
+
+
+
+
+
+
     </h:body>
 
 </html>

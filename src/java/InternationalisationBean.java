@@ -24,24 +24,43 @@ public class InternationalisationBean {
      */
     private String locale;
 	private Map<String,Object> countryMap;
+    /**
+     *
+     */
     public InternationalisationBean() {
         countryMap = new LinkedHashMap<String,Object>();
 		countryMap.put("English", new Locale("en"));
 		countryMap.put("French", new Locale("fr"));
                 countryMap.put("Arabic", new Locale("ar"));
     }
+    /**
+     *
+     * @return
+     */
     public Map<String, Object> getCountries() {
 		return countryMap;
 	}
 	
-	public String getLocale() {
+	/**
+     *
+     * @return
+     */
+    public String getLocale() {
 		return locale;
 	}
-	public void setLocale(String locale) {
+	/**
+     *
+     * @param locale
+     */
+    public void setLocale(String locale) {
 		this.locale = locale;
 	}
 
-	public void localeChanged(ValueChangeEvent e){
+	/**
+     *
+     * @param e
+     */
+    public void localeChanged(ValueChangeEvent e){
 		
 		String localeStr = e.getNewValue().toString();		
 		
@@ -52,4 +71,5 @@ public class InternationalisationBean {
         	}
         }
 	}
+    
 }

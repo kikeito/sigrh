@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAttributionrefcompTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAttributionrefcompLabel_idattributionrefcomp}" for="idattributionrefcomp" />
+                    <h:inputText id="idattributionrefcomp" value="#{attributionrefcompController.selected.idattributionrefcomp}" title="#{bundle.EditAttributionrefcompTitle_idattributionrefcomp}" required="true" requiredMessage="#{bundle.EditAttributionrefcompRequiredMessage_idattributionrefcomp}"/>
+                    <h:outputLabel value="#{bundle.EditAttributionrefcompLabel_referentielcompetenceIdreferentielcompetence}" for="referentielcompetenceIdreferentielcompetence" />
+                    <h:selectOneMenu id="referentielcompetenceIdreferentielcompetence" value="#{attributionrefcompController.selected.referentielcompetenceIdreferentielcompetence}" title="#{bundle.EditAttributionrefcompTitle_referentielcompetenceIdreferentielcompetence}" required="true" requiredMessage="#{bundle.EditAttributionrefcompRequiredMessage_referentielcompetenceIdreferentielcompetence}">
+                        <f:selectItems value="#{referentielcompetenceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAttributionrefcompLabel_attributionsIdattributions}" for="attributionsIdattributions" />
+                    <h:selectOneMenu id="attributionsIdattributions" value="#{attributionrefcompController.selected.attributionsIdattributions}" title="#{bundle.EditAttributionrefcompTitle_attributionsIdattributions}" required="true" requiredMessage="#{bundle.EditAttributionrefcompRequiredMessage_attributionsIdattributions}">
+                        <f:selectItems value="#{attributionsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{attributionrefcompController.update}" value="#{bundle.EditAttributionrefcompSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAttributionrefcompViewLink}"/>
+                <br />
+                <h:commandLink action="#{attributionrefcompController.prepareList}" value="#{bundle.EditAttributionrefcompShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAttributionrefcompIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

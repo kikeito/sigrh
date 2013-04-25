@@ -52,53 +52,104 @@ public class ParamsDetails implements Serializable {
     @ManyToOne(optional = false)
     private Params paramsIdparams;
 
+    /**
+     *
+     */
     public ParamsDetails() {
     }
 
+    /**
+     *
+     * @param idparamsDetails
+     */
     public ParamsDetails(Integer idparamsDetails) {
         this.idparamsDetails = idparamsDetails;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdparamsDetails() {
         return idparamsDetails;
     }
 
+    /**
+     *
+     * @param idparamsDetails
+     */
     public void setIdparamsDetails(Integer idparamsDetails) {
         this.idparamsDetails = idparamsDetails;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDate1() {
         return date1;
     }
 
+    /**
+     *
+     * @param date1
+     */
     public void setDate1(Date date1) {
         this.date1 = date1;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDate2() {
         return date2;
     }
 
+    /**
+     *
+     * @param date2
+     */
     public void setDate2(Date date2) {
         this.date2 = date2;
     }
 
+    /**
+     *
+     * @return
+     */
     public Personnel getPersonnelIdpersonnel() {
         return personnelIdpersonnel;
     }
 
+    /**
+     *
+     * @param personnelIdpersonnel
+     */
     public void setPersonnelIdpersonnel(Personnel personnelIdpersonnel) {
         this.personnelIdpersonnel = personnelIdpersonnel;
     }
 
+    /**
+     *
+     * @return
+     */
     public Params getParamsIdparams() {
         return paramsIdparams;
     }
 
+    /**
+     *
+     * @param paramsIdparams
+     */
     public void setParamsIdparams(Params paramsIdparams) {
         this.paramsIdparams = paramsIdparams;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -106,6 +157,11 @@ public class ParamsDetails implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -119,6 +175,10 @@ public class ParamsDetails implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "EntityPk.ParamsDetails[ idparamsDetails=" + idparamsDetails + " ]";

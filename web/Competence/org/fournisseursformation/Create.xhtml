@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFournisseursformationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFournisseursformationLabel_idfournisseursformation}" for="idfournisseursformation" />
+                    <h:inputText id="idfournisseursformation" value="#{fournisseursformationController.selected.idfournisseursformation}" title="#{bundle.CreateFournisseursformationTitle_idfournisseursformation}" required="true" requiredMessage="#{bundle.CreateFournisseursformationRequiredMessage_idfournisseursformation}"/>
+                    <h:outputLabel value="#{bundle.CreateFournisseursformationLabel_acceptation}" for="acceptation" />
+                    <h:inputText id="acceptation" value="#{fournisseursformationController.selected.acceptation}" title="#{bundle.CreateFournisseursformationTitle_acceptation}" />
+                    <h:outputLabel value="#{bundle.CreateFournisseursformationLabel_formationsIdformations}" for="formationsIdformations" />
+                    <h:selectOneMenu id="formationsIdformations" value="#{fournisseursformationController.selected.formationsIdformations}" title="#{bundle.CreateFournisseursformationTitle_formationsIdformations}" required="true" requiredMessage="#{bundle.CreateFournisseursformationRequiredMessage_formationsIdformations}">
+                        <f:selectItems value="#{formationsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFournisseursformationLabel_fournisseursIdfournisseurs}" for="fournisseursIdfournisseurs" />
+                    <h:selectOneMenu id="fournisseursIdfournisseurs" value="#{fournisseursformationController.selected.fournisseursIdfournisseurs}" title="#{bundle.CreateFournisseursformationTitle_fournisseursIdfournisseurs}" required="true" requiredMessage="#{bundle.CreateFournisseursformationRequiredMessage_fournisseursIdfournisseurs}">
+                        <f:selectItems value="#{fournisseursController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{fournisseursformationController.create}" value="#{bundle.CreateFournisseursformationSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{fournisseursformationController.prepareList}" value="#{bundle.CreateFournisseursformationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFournisseursformationIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

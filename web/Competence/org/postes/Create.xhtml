@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePostesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePostesLabel_idpostes}" for="idpostes" />
+                    <h:inputText id="idpostes" value="#{postesController.selected.idpostes}" title="#{bundle.CreatePostesTitle_idpostes}" required="true" requiredMessage="#{bundle.CreatePostesRequiredMessage_idpostes}"/>
+                    <h:outputLabel value="#{bundle.CreatePostesLabel_nomfr}" for="nomfr" />
+                    <h:inputText id="nomfr" value="#{postesController.selected.nomfr}" title="#{bundle.CreatePostesTitle_nomfr}" />
+                    <h:outputLabel value="#{bundle.CreatePostesLabel_nomar}" for="nomar" />
+                    <h:inputText id="nomar" value="#{postesController.selected.nomar}" title="#{bundle.CreatePostesTitle_nomar}" />
+                    <h:outputLabel value="#{bundle.CreatePostesLabel_poid}" for="poid" />
+                    <h:inputText id="poid" value="#{postesController.selected.poid}" title="#{bundle.CreatePostesTitle_poid}" />
+                    <h:outputLabel value="#{bundle.CreatePostesLabel_postesIdpostes}" for="postesIdpostes" />
+                    <h:selectOneMenu id="postesIdpostes" value="#{postesController.selected.postesIdpostes}" title="#{bundle.CreatePostesTitle_postesIdpostes}" >
+                        <f:selectItems value="#{postesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePostesLabel_organigramesIdorganigrame}" for="organigramesIdorganigrame" />
+                    <h:selectOneMenu id="organigramesIdorganigrame" value="#{postesController.selected.organigramesIdorganigrame}" title="#{bundle.CreatePostesTitle_organigramesIdorganigrame}" required="true" requiredMessage="#{bundle.CreatePostesRequiredMessage_organigramesIdorganigrame}">
+                        <f:selectItems value="#{organigramesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePostesLabel_modelreferentielsIdmodelreferentiels}" for="modelreferentielsIdmodelreferentiels" />
+                    <h:selectOneMenu id="modelreferentielsIdmodelreferentiels" value="#{postesController.selected.modelreferentielsIdmodelreferentiels}" title="#{bundle.CreatePostesTitle_modelreferentielsIdmodelreferentiels}" required="true" requiredMessage="#{bundle.CreatePostesRequiredMessage_modelreferentielsIdmodelreferentiels}">
+                        <f:selectItems value="#{modelreferentielsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{postesController.create}" value="#{bundle.CreatePostesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{postesController.prepareList}" value="#{bundle.CreatePostesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePostesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAttributionrefcompTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAttributionrefcompLabel_idattributionrefcomp}"/>
+                    <h:outputText value="#{attributionrefcompController.selected.idattributionrefcomp}" title="#{bundle.ViewAttributionrefcompTitle_idattributionrefcomp}"/>
+                    <h:outputText value="#{bundle.ViewAttributionrefcompLabel_referentielcompetenceIdreferentielcompetence}"/>
+                    <h:outputText value="#{attributionrefcompController.selected.referentielcompetenceIdreferentielcompetence}" title="#{bundle.ViewAttributionrefcompTitle_referentielcompetenceIdreferentielcompetence}"/>
+                    <h:outputText value="#{bundle.ViewAttributionrefcompLabel_attributionsIdattributions}"/>
+                    <h:outputText value="#{attributionrefcompController.selected.attributionsIdattributions}" title="#{bundle.ViewAttributionrefcompTitle_attributionsIdattributions}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{attributionrefcompController.destroyAndView}" value="#{bundle.ViewAttributionrefcompDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAttributionrefcompEditLink}"/>
+                <br />
+                <h:commandLink action="#{attributionrefcompController.prepareCreate}" value="#{bundle.ViewAttributionrefcompCreateLink}" />
+                <br />
+                <h:commandLink action="#{attributionrefcompController.prepareList}" value="#{bundle.ViewAttributionrefcompShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAttributionrefcompIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

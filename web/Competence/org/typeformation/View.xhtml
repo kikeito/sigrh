@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTypeformationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTypeformationLabel_idtypeformation}"/>
+                    <h:outputText value="#{typeformationController.selected.idtypeformation}" title="#{bundle.ViewTypeformationTitle_idtypeformation}"/>
+                    <h:outputText value="#{bundle.ViewTypeformationLabel_labeltypeformationfr}"/>
+                    <h:outputText value="#{typeformationController.selected.labeltypeformationfr}" title="#{bundle.ViewTypeformationTitle_labeltypeformationfr}"/>
+                    <h:outputText value="#{bundle.ViewTypeformationLabel_labeltypeformationar}"/>
+                    <h:outputText value="#{typeformationController.selected.labeltypeformationar}" title="#{bundle.ViewTypeformationTitle_labeltypeformationar}"/>
+                    <h:outputText value="#{bundle.ViewTypeformationLabel_descriptiontypeform}"/>
+                    <h:outputText value="#{typeformationController.selected.descriptiontypeform}" title="#{bundle.ViewTypeformationTitle_descriptiontypeform}"/>
+                    <h:outputText value="#{bundle.ViewTypeformationLabel_descritptiontypeformar}"/>
+                    <h:outputText value="#{typeformationController.selected.descritptiontypeformar}" title="#{bundle.ViewTypeformationTitle_descritptiontypeformar}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{typeformationController.destroyAndView}" value="#{bundle.ViewTypeformationDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTypeformationEditLink}"/>
+                <br />
+                <h:commandLink action="#{typeformationController.prepareCreate}" value="#{bundle.ViewTypeformationCreateLink}" />
+                <br />
+                <h:commandLink action="#{typeformationController.prepareList}" value="#{bundle.ViewTypeformationShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTypeformationIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

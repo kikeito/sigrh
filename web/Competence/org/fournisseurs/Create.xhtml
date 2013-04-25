@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFournisseursTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFournisseursLabel_idfournisseurs}" for="idfournisseurs" />
+                    <h:inputText id="idfournisseurs" value="#{fournisseursController.selected.idfournisseurs}" title="#{bundle.CreateFournisseursTitle_idfournisseurs}" required="true" requiredMessage="#{bundle.CreateFournisseursRequiredMessage_idfournisseurs}"/>
+                    <h:outputLabel value="#{bundle.CreateFournisseursLabel_nomar}" for="nomar" />
+                    <h:inputText id="nomar" value="#{fournisseursController.selected.nomar}" title="#{bundle.CreateFournisseursTitle_nomar}" />
+                    <h:outputLabel value="#{bundle.CreateFournisseursLabel_nomfr}" for="nomfr" />
+                    <h:inputText id="nomfr" value="#{fournisseursController.selected.nomfr}" title="#{bundle.CreateFournisseursTitle_nomfr}" />
+                    <h:outputLabel value="#{bundle.CreateFournisseursLabel_adresse}" for="adresse" />
+                    <h:inputText id="adresse" value="#{fournisseursController.selected.adresse}" title="#{bundle.CreateFournisseursTitle_adresse}" />
+                    <h:outputLabel value="#{bundle.CreateFournisseursLabel_tel}" for="tel" />
+                    <h:inputText id="tel" value="#{fournisseursController.selected.tel}" title="#{bundle.CreateFournisseursTitle_tel}" />
+                    <h:outputLabel value="#{bundle.CreateFournisseursLabel_domaine}" for="domaine" />
+                    <h:inputText id="domaine" value="#{fournisseursController.selected.domaine}" title="#{bundle.CreateFournisseursTitle_domaine}" />
+                    <h:outputLabel value="#{bundle.CreateFournisseursLabel_statutguridique}" for="statutguridique" />
+                    <h:inputText id="statutguridique" value="#{fournisseursController.selected.statutguridique}" title="#{bundle.CreateFournisseursTitle_statutguridique}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{fournisseursController.create}" value="#{bundle.CreateFournisseursSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{fournisseursController.prepareList}" value="#{bundle.CreateFournisseursShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFournisseursIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

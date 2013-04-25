@@ -50,55 +50,106 @@ public class Params implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "paramsIdparams")
     private Collection<ParamsDetails> paramsDetailsCollection;
 
+    /**
+     *
+     */
     public Params() {
     }
 
+    /**
+     *
+     * @param idparams
+     */
     public Params(String idparams) {
         this.idparams = idparams;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIdparams() {
         return idparams;
     }
 
+    /**
+     *
+     * @param idparams
+     */
     public void setIdparams(String idparams) {
         this.idparams = idparams;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     *
+     * @param type
+     */
     public void setType(String type) {
         this.type = type;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<ParamsLang> getParamsLangCollection() {
         return paramsLangCollection;
     }
 
+    /**
+     *
+     * @param paramsLangCollection
+     */
     public void setParamsLangCollection(Collection<ParamsLang> paramsLangCollection) {
         this.paramsLangCollection = paramsLangCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<ParamsDetails> getParamsDetailsCollection() {
         return paramsDetailsCollection;
     }
 
+    /**
+     *
+     * @param paramsDetailsCollection
+     */
     public void setParamsDetailsCollection(Collection<ParamsDetails> paramsDetailsCollection) {
         this.paramsDetailsCollection = paramsDetailsCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -106,6 +157,11 @@ public class Params implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -119,6 +175,10 @@ public class Params implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "EntityPk.Params[ idparams=" + idparams + " ]";

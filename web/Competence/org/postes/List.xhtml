@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPostesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPostesEmpty}" rendered="#{postesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{postesController.items.rowCount > 0}">
+                    <h:outputText value="#{postesController.pagination.pageFirstItem + 1}..#{postesController.pagination.pageLastItem + 1}/#{postesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{postesController.previous}" value="#{bundle.Previous} #{postesController.pagination.pageSize}" rendered="#{postesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{postesController.next}" value="#{bundle.Next} #{postesController.pagination.pageSize}" rendered="#{postesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{postesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPostesTitle_idpostes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpostes}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPostesTitle_nomfr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomfr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPostesTitle_nomar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPostesTitle_poid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.poid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPostesTitle_postesIdpostes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.postesIdpostes}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPostesTitle_organigramesIdorganigrame}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.organigramesIdorganigrame}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPostesTitle_modelreferentielsIdmodelreferentiels}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modelreferentielsIdmodelreferentiels}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{postesController.prepareView}" value="#{bundle.ListPostesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{postesController.prepareEdit}" value="#{bundle.ListPostesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{postesController.destroy}" value="#{bundle.ListPostesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{postesController.prepareCreate}" value="#{bundle.ListPostesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPostesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

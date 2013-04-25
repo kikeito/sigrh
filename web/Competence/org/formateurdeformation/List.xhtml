@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFormateurdeformationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFormateurdeformationEmpty}" rendered="#{formateurdeformationController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{formateurdeformationController.items.rowCount > 0}">
+                    <h:outputText value="#{formateurdeformationController.pagination.pageFirstItem + 1}..#{formateurdeformationController.pagination.pageLastItem + 1}/#{formateurdeformationController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{formateurdeformationController.previous}" value="#{bundle.Previous} #{formateurdeformationController.pagination.pageSize}" rendered="#{formateurdeformationController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{formateurdeformationController.next}" value="#{bundle.Next} #{formateurdeformationController.pagination.pageSize}" rendered="#{formateurdeformationController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{formateurdeformationController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFormateurdeformationTitle_idformateurdeformation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idformateurdeformation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFormateurdeformationTitle_fournisseursformationIdfournisseursformation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fournisseursformationIdfournisseursformation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFormateurdeformationTitle_formateursIdformateurs}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.formateursIdformateurs}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{formateurdeformationController.prepareView}" value="#{bundle.ListFormateurdeformationViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{formateurdeformationController.prepareEdit}" value="#{bundle.ListFormateurdeformationEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{formateurdeformationController.destroy}" value="#{bundle.ListFormateurdeformationDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{formateurdeformationController.prepareCreate}" value="#{bundle.ListFormateurdeformationCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListFormateurdeformationIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

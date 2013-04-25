@@ -46,45 +46,88 @@ public class ParamsLang implements Serializable {
     @ManyToOne(optional = false)
     private Lang langIdlang;
 
+    /**
+     *
+     */
     public ParamsLang() {
     }
 
+    /**
+     *
+     * @param idparamsLang
+     */
     public ParamsLang(Integer idparamsLang) {
         this.idparamsLang = idparamsLang;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdparamsLang() {
         return idparamsLang;
     }
 
+    /**
+     *
+     * @param idparamsLang
+     */
     public void setIdparamsLang(Integer idparamsLang) {
         this.idparamsLang = idparamsLang;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIntitule() {
         return intitule;
     }
 
+    /**
+     *
+     * @param intitule
+     */
     public void setIntitule(String intitule) {
         this.intitule = intitule;
     }
 
+    /**
+     *
+     * @return
+     */
     public Params getParamsIdparams() {
         return paramsIdparams;
     }
 
+    /**
+     *
+     * @param paramsIdparams
+     */
     public void setParamsIdparams(Params paramsIdparams) {
         this.paramsIdparams = paramsIdparams;
     }
 
+    /**
+     *
+     * @return
+     */
     public Lang getLangIdlang() {
         return langIdlang;
     }
 
+    /**
+     *
+     * @param langIdlang
+     */
     public void setLangIdlang(Lang langIdlang) {
         this.langIdlang = langIdlang;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -92,6 +135,11 @@ public class ParamsLang implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -105,6 +153,10 @@ public class ParamsLang implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "EntityPk.ParamsLang[ idparamsLang=" + idparamsLang + " ]";

@@ -43,37 +43,72 @@ public class ColumnsLang implements Serializable {
     @ManyToOne(optional = false)
     private Lang langIdlang;
 
+    /**
+     *
+     */
     public ColumnsLang() {
     }
 
+    /**
+     *
+     * @param idcolumnsLang
+     */
     public ColumnsLang(Integer idcolumnsLang) {
         this.idcolumnsLang = idcolumnsLang;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdcolumnsLang() {
         return idcolumnsLang;
     }
 
+    /**
+     *
+     * @param idcolumnsLang
+     */
     public void setIdcolumnsLang(Integer idcolumnsLang) {
         this.idcolumnsLang = idcolumnsLang;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLabel() {
         return label;
     }
 
+    /**
+     *
+     * @param label
+     */
     public void setLabel(String label) {
         this.label = label;
     }
 
+    /**
+     *
+     * @return
+     */
     public Lang getLangIdlang() {
         return langIdlang;
     }
 
+    /**
+     *
+     * @param langIdlang
+     */
     public void setLangIdlang(Lang langIdlang) {
         this.langIdlang = langIdlang;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -81,6 +116,11 @@ public class ColumnsLang implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -94,6 +134,10 @@ public class ColumnsLang implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "EntityPk.ColumnsLang[ idcolumnsLang=" + idcolumnsLang + " ]";

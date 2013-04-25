@@ -50,53 +50,104 @@ public class PersonnelLang implements Serializable {
     @ManyToOne(optional = false)
     private Lang langIdlang;
 
+    /**
+     *
+     */
     public PersonnelLang() {
     }
 
+    /**
+     *
+     * @param idpersonnelLang
+     */
     public PersonnelLang(Integer idpersonnelLang) {
         this.idpersonnelLang = idpersonnelLang;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdpersonnelLang() {
         return idpersonnelLang;
     }
 
+    /**
+     *
+     * @param idpersonnelLang
+     */
     public void setIdpersonnelLang(Integer idpersonnelLang) {
         this.idpersonnelLang = idpersonnelLang;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPrenom() {
         return prenom;
     }
 
+    /**
+     *
+     * @param prenom
+     */
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
+    /**
+     *
+     * @return
+     */
     public Personnel getPersonnelIdpersonnel() {
         return personnelIdpersonnel;
     }
 
+    /**
+     *
+     * @param personnelIdpersonnel
+     */
     public void setPersonnelIdpersonnel(Personnel personnelIdpersonnel) {
         this.personnelIdpersonnel = personnelIdpersonnel;
     }
 
+    /**
+     *
+     * @return
+     */
     public Lang getLangIdlang() {
         return langIdlang;
     }
 
+    /**
+     *
+     * @param langIdlang
+     */
     public void setLangIdlang(Lang langIdlang) {
         this.langIdlang = langIdlang;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -104,6 +155,11 @@ public class PersonnelLang implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -117,6 +173,10 @@ public class PersonnelLang implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "EntityPk.PersonnelLang[ idpersonnelLang=" + idpersonnelLang + " ]";

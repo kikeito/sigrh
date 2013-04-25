@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewReferentielcompetenceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewReferentielcompetenceLabel_idreferentielcompetence}"/>
+                    <h:outputText value="#{referentielcompetenceController.selected.idreferentielcompetence}" title="#{bundle.ViewReferentielcompetenceTitle_idreferentielcompetence}"/>
+                    <h:outputText value="#{bundle.ViewReferentielcompetenceLabel_valeurfr}"/>
+                    <h:outputText value="#{referentielcompetenceController.selected.valeurfr}" title="#{bundle.ViewReferentielcompetenceTitle_valeurfr}"/>
+                    <h:outputText value="#{bundle.ViewReferentielcompetenceLabel_valeurar}"/>
+                    <h:outputText value="#{referentielcompetenceController.selected.valeurar}" title="#{bundle.ViewReferentielcompetenceTitle_valeurar}"/>
+                    <h:outputText value="#{bundle.ViewReferentielcompetenceLabel_referentielcompetenceIdreferentielcompetence}"/>
+                    <h:outputText value="#{referentielcompetenceController.selected.referentielcompetenceIdreferentielcompetence}" title="#{bundle.ViewReferentielcompetenceTitle_referentielcompetenceIdreferentielcompetence}"/>
+                    <h:outputText value="#{bundle.ViewReferentielcompetenceLabel_modelreferentielsIdmodelreferentiels}"/>
+                    <h:outputText value="#{referentielcompetenceController.selected.modelreferentielsIdmodelreferentiels}" title="#{bundle.ViewReferentielcompetenceTitle_modelreferentielsIdmodelreferentiels}"/>
+                    <h:outputText value="#{bundle.ViewReferentielcompetenceLabel_metareferentielsIdmetareferentiels}"/>
+                    <h:outputText value="#{referentielcompetenceController.selected.metareferentielsIdmetareferentiels}" title="#{bundle.ViewReferentielcompetenceTitle_metareferentielsIdmetareferentiels}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{referentielcompetenceController.destroyAndView}" value="#{bundle.ViewReferentielcompetenceDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewReferentielcompetenceEditLink}"/>
+                <br />
+                <h:commandLink action="#{referentielcompetenceController.prepareCreate}" value="#{bundle.ViewReferentielcompetenceCreateLink}" />
+                <br />
+                <h:commandLink action="#{referentielcompetenceController.prepareList}" value="#{bundle.ViewReferentielcompetenceShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewReferentielcompetenceIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

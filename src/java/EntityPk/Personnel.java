@@ -4,9 +4,11 @@
  */
 package EntityPk;
 
+import Competences.org.entityPK.Haveposte;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -50,6 +52,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Personnel.findByPosition", query = "SELECT p FROM Personnel p WHERE p.position = :position"),
     @NamedQuery(name = "Personnel.findByDeleted", query = "SELECT p FROM Personnel p WHERE p.deleted = :deleted")})
 public class Personnel implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personnelIdpersonnel")
+    private List<Haveposte> haveposteList;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -107,164 +111,324 @@ public class Personnel implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personnelIdpersonnel")
     private Collection<PersonnelLang> personnelLangCollection;
 
+    /**
+     *
+     */
     public Personnel() {
     }
 
+    /**
+     *
+     * @param idpersonnel
+     */
     public Personnel(Integer idpersonnel) {
         this.idpersonnel = idpersonnel;
     }
 
+    /**
+     *
+     * @param idpersonnel
+     * @param position
+     */
     public Personnel(Integer idpersonnel, int position) {
         this.idpersonnel = idpersonnel;
         this.position = position;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdpersonnel() {
         return idpersonnel;
     }
 
+    /**
+     *
+     * @param idpersonnel
+     */
     public void setIdpersonnel(Integer idpersonnel) {
         this.idpersonnel = idpersonnel;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCnrps() {
         return cnrps;
     }
 
+    /**
+     *
+     * @param cnrps
+     */
     public void setCnrps(String cnrps) {
         this.cnrps = cnrps;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCin() {
         return cin;
     }
 
+    /**
+     *
+     * @param cin
+     */
     public void setCin(String cin) {
         this.cin = cin;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getSpecialite() {
         return specialite;
     }
 
+    /**
+     *
+     * @param specialite
+     */
     public void setSpecialite(String specialite) {
         this.specialite = specialite;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTel() {
         return tel;
     }
 
+    /**
+     *
+     * @param tel
+     */
     public void setTel(String tel) {
         this.tel = tel;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFax() {
         return fax;
     }
 
+    /**
+     *
+     * @param fax
+     */
     public void setFax(String fax) {
         this.fax = fax;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAddresse() {
         return addresse;
     }
 
+    /**
+     *
+     * @param addresse
+     */
     public void setAddresse(String addresse) {
         this.addresse = addresse;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCodepostal() {
         return codepostal;
     }
 
+    /**
+     *
+     * @param codepostal
+     */
     public void setCodepostal(String codepostal) {
         this.codepostal = codepostal;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getVille() {
         return ville;
     }
 
+    /**
+     *
+     * @param ville
+     */
     public void setVille(String ville) {
         this.ville = ville;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDateUpd() {
         return dateUpd;
     }
 
+    /**
+     *
+     * @param dateUpd
+     */
     public void setDateUpd(Date dateUpd) {
         this.dateUpd = dateUpd;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDateAdd() {
         return dateAdd;
     }
 
+    /**
+     *
+     * @param dateAdd
+     */
     public void setDateAdd(Date dateAdd) {
         this.dateAdd = dateAdd;
     }
 
+    /**
+     *
+     * @return
+     */
     public Short getActive() {
         return active;
     }
 
+    /**
+     *
+     * @param active
+     */
     public void setActive(Short active) {
         this.active = active;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPosition() {
         return position;
     }
 
+    /**
+     *
+     * @param position
+     */
     public void setPosition(int position) {
         this.position = position;
     }
 
+    /**
+     *
+     * @return
+     */
     public Short getDeleted() {
         return deleted;
     }
 
+    /**
+     *
+     * @param deleted
+     */
     public void setDeleted(Short deleted) {
         this.deleted = deleted;
     }
 
+    /**
+     *
+     * @return
+     */
     public Grade getGradeIdgrade() {
         return gradeIdgrade;
     }
 
+    /**
+     *
+     * @param gradeIdgrade
+     */
     public void setGradeIdgrade(Grade gradeIdgrade) {
         this.gradeIdgrade = gradeIdgrade;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<ParamsDetails> getParamsDetailsCollection() {
         return paramsDetailsCollection;
     }
 
+    /**
+     *
+     * @param paramsDetailsCollection
+     */
     public void setParamsDetailsCollection(Collection<ParamsDetails> paramsDetailsCollection) {
         this.paramsDetailsCollection = paramsDetailsCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<PersonnelLang> getPersonnelLangCollection() {
         return personnelLangCollection;
     }
 
+    /**
+     *
+     * @param personnelLangCollection
+     */
     public void setPersonnelLangCollection(Collection<PersonnelLang> personnelLangCollection) {
         this.personnelLangCollection = personnelLangCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -272,6 +436,11 @@ public class Personnel implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -285,9 +454,30 @@ public class Personnel implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "EntityPk.Personnel[ idpersonnel=" + idpersonnel + " ]";
+    }
+
+    /**
+     *
+     * @return
+     */
+    @XmlTransient
+    public List<Haveposte> getHaveposteList() {
+        return haveposteList;
+    }
+
+    /**
+     *
+     * @param haveposteList
+     */
+    public void setHaveposteList(List<Haveposte> haveposteList) {
+        this.haveposteList = haveposteList;
     }
     
 }

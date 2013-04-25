@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditModelreferentielsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditModelreferentielsLabel_idmodelreferentiels}" for="idmodelreferentiels" />
+                    <h:inputText id="idmodelreferentiels" value="#{modelreferentielsController.selected.idmodelreferentiels}" title="#{bundle.EditModelreferentielsTitle_idmodelreferentiels}" required="true" requiredMessage="#{bundle.EditModelreferentielsRequiredMessage_idmodelreferentiels}"/>
+                    <h:outputLabel value="#{bundle.EditModelreferentielsLabel_nommodelref}" for="nommodelref" />
+                    <h:inputText id="nommodelref" value="#{modelreferentielsController.selected.nommodelref}" title="#{bundle.EditModelreferentielsTitle_nommodelref}" />
+                    <h:outputLabel value="#{bundle.EditModelreferentielsLabel_nommodelrefar}" for="nommodelrefar" />
+                    <h:inputText id="nommodelrefar" value="#{modelreferentielsController.selected.nommodelrefar}" title="#{bundle.EditModelreferentielsTitle_nommodelrefar}" />
+                    <h:outputLabel value="#{bundle.EditModelreferentielsLabel_description}" for="description" />
+                    <h:inputTextarea rows="4" cols="30" id="description" value="#{modelreferentielsController.selected.description}" title="#{bundle.EditModelreferentielsTitle_description}" />
+                    <h:outputLabel value="#{bundle.EditModelreferentielsLabel_descriptionar}" for="descriptionar" />
+                    <h:inputTextarea rows="4" cols="30" id="descriptionar" value="#{modelreferentielsController.selected.descriptionar}" title="#{bundle.EditModelreferentielsTitle_descriptionar}" />
+                </h:panelGrid>
+                <h:commandLink action="#{modelreferentielsController.update}" value="#{bundle.EditModelreferentielsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditModelreferentielsViewLink}"/>
+                <br />
+                <h:commandLink action="#{modelreferentielsController.prepareList}" value="#{bundle.EditModelreferentielsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditModelreferentielsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

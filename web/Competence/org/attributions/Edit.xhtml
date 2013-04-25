@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAttributionsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAttributionsLabel_idattributions}" for="idattributions" />
+                    <h:inputText id="idattributions" value="#{attributionsController.selected.idattributions}" title="#{bundle.EditAttributionsTitle_idattributions}" required="true" requiredMessage="#{bundle.EditAttributionsRequiredMessage_idattributions}"/>
+                    <h:outputLabel value="#{bundle.EditAttributionsLabel_nomfr}" for="nomfr" />
+                    <h:inputText id="nomfr" value="#{attributionsController.selected.nomfr}" title="#{bundle.EditAttributionsTitle_nomfr}" />
+                    <h:outputLabel value="#{bundle.EditAttributionsLabel_attributionscolar}" for="attributionscolar" />
+                    <h:inputText id="attributionscolar" value="#{attributionsController.selected.attributionscolar}" title="#{bundle.EditAttributionsTitle_attributionscolar}" />
+                    <h:outputLabel value="#{bundle.EditAttributionsLabel_postesIdpostes}" for="postesIdpostes" />
+                    <h:selectOneMenu id="postesIdpostes" value="#{attributionsController.selected.postesIdpostes}" title="#{bundle.EditAttributionsTitle_postesIdpostes}" required="true" requiredMessage="#{bundle.EditAttributionsRequiredMessage_postesIdpostes}">
+                        <f:selectItems value="#{postesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{attributionsController.update}" value="#{bundle.EditAttributionsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAttributionsViewLink}"/>
+                <br />
+                <h:commandLink action="#{attributionsController.prepareList}" value="#{bundle.EditAttributionsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAttributionsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

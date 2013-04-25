@@ -3,44 +3,71 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.EditPersonnelLangTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+    
+    <h:head>
+           
+    </h:head>
+    <h:body>
+            
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditPersonnelLangLabel_idpersonnelLang}" for="idpersonnelLang" />
-                    <h:inputText id="idpersonnelLang" value="#{personnelLangController.selected.idpersonnelLang}" title="#{bundle.EditPersonnelLangTitle_idpersonnelLang}" required="true" requiredMessage="#{bundle.EditPersonnelLangRequiredMessage_idpersonnelLang}"/>
+                <p:panelGrid  id="update" columns="4">
+                    <h:outputLabel value="#{bundle.EditPersonnelLangLabel_idpersonnelLang}" for="idpersonnelLang" rendered="false" />
+                    <h:inputText id="idpersonnelLang" value="#{personnelLangController.selectedPersonnellang.idpersonnelLang}"  rendered="fales" title="#{bundle.EditPersonnelLangTitle_idpersonnelLang}" required="true" requiredMessage="#{bundle.EditPersonnelLangRequiredMessage_idpersonnelLang}"/>
                     <h:outputLabel value="#{bundle.EditPersonnelLangLabel_nom}" for="nom" />
-                    <h:inputText id="nom" value="#{personnelLangController.selected.nom}" title="#{bundle.EditPersonnelLangTitle_nom}" />
+                    <h:inputText id="nom" value="#{personnelLangController.selectedPersonnellang.nom}" title="#{bundle.EditPersonnelLangTitle_nom}" />
                     <h:outputLabel value="#{bundle.EditPersonnelLangLabel_prenom}" for="prenom" />
-                    <h:inputText id="prenom" value="#{personnelLangController.selected.prenom}" title="#{bundle.EditPersonnelLangTitle_prenom}" />
-                    <h:outputLabel value="#{bundle.EditPersonnelLangLabel_personnelIdpersonnel}" for="personnelIdpersonnel" />
-                    <h:selectOneMenu id="personnelIdpersonnel" value="#{personnelLangController.selected.personnelIdpersonnel}" title="#{bundle.EditPersonnelLangTitle_personnelIdpersonnel}" required="true" requiredMessage="#{bundle.EditPersonnelLangRequiredMessage_personnelIdpersonnel}">
-                        <f:selectItems value="#{personnelController.itemsAvailableSelectOne}"/>
+                    <h:inputText id="prenom" value="#{personnelLangController.selectedPersonnellang.prenom}" title="#{bundle.EditPersonnelLangTitle_prenom}" />
+                    
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_idpersonnel}" for="idpersonnel" />
+                    <h:inputText id="idpersonnel" disabled="true" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.idpersonnel}" title="#{bundle.EditPersonnelTitle_idpersonnel}" required="true" requiredMessage="#{bundle.EditPersonnelRequiredMessage_idpersonnel}"/>
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_cnrps}" for="cnrps" />
+                    <h:inputText id="cnrps" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.cnrps}" title="#{bundle.EditPersonnelTitle_cnrps}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_cin}" for="cin" />
+                    <h:inputText id="cin" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.cin}" title="#{bundle.EditPersonnelTitle_cin}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.email}" title="#{bundle.EditPersonnelTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_specialite}" for="specialite" />
+                    <h:inputText id="specialite" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.specialite}" title="#{bundle.EditPersonnelTitle_specialite}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_tel}" for="tel" />
+                    <h:inputText id="tel" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.tel}" title="#{bundle.EditPersonnelTitle_tel}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_fax}" for="fax" />
+                    <h:inputText id="fax" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.fax}" title="#{bundle.EditPersonnelTitle_fax}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_addresse}" for="addresse" />
+                    <h:inputText id="addresse" value="#{personnelController.selected.addresse}" title="#{bundle.EditPersonnelTitle_addresse}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_codepostal}" for="codepostal" />
+                    <h:inputText id="codepostal" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.codepostal}" title="#{bundle.EditPersonnelTitle_codepostal}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_ville}" for="ville" />
+                    <h:inputText id="ville" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.ville}" title="#{bundle.EditPersonnelTitle_ville}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_dateUpd}" for="dateUpd" />
+                    <p:calendar  id="dateUpd" pattern="MM/dd/yyyy HH:mm:ss" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.dateUpd}" />
+                    
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_dateAdd}" for="dateAdd" />
+                    <p:calendar  id="dateAdd" pattern="MM/dd/yyyy HH:mm:ss" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.dateAdd}" />
+
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_active}" for="active" />
+                    <h:inputText id="active" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.ville}" title="#{bundle.EditPersonnelTitle_active}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_position}" for="position" />
+                    <h:inputText id="position" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.position}" title="#{bundle.EditPersonnelTitle_position}" required="true" requiredMessage="#{bundle.EditPersonnelRequiredMessage_position}"/>
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_deleted}" for="deleted" />
+                    <h:inputText id="deleted" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.deleted}" title="#{bundle.EditPersonnelTitle_deleted}" />
+                    <h:outputLabel value="#{bundle.EditPersonnelLabel_gradeIdgrade}" for="gradeIdgrade" />
+                    <h:selectOneMenu   id="gradeIdgrade" value="#{personnelLangController.selectedPersonnellang.personnelIdpersonnel.gradeIdgrade}" title="#{bundle.EditPersonnelTitle_gradeIdgrade}" required="true" requiredMessage="#{bundle.EditPersonnelRequiredMessage_gradeIdgrade}">
+                        <f:selectItems value="#{gradeController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.EditPersonnelLangLabel_langIdlang}" for="langIdlang" />
-                    <h:selectOneMenu id="langIdlang" value="#{personnelLangController.selected.langIdlang}" title="#{bundle.EditPersonnelLangTitle_langIdlang}" required="true" requiredMessage="#{bundle.EditPersonnelLangRequiredMessage_langIdlang}">
+                    <h:outputLabel value="#{bundle.EditPersonnelLangLabel_langIdlang}"  rendered="false" for="langIdlang" />
+                    <h:selectOneMenu id="langIdlang" value="#{personnelLangController.selected.langIdlang}" rendered="false" title="#{bundle.EditPersonnelLangTitle_langIdlang}" required="true" requiredMessage="#{bundle.EditPersonnelLangRequiredMessage_langIdlang}">
                         <f:selectItems value="#{langController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                </h:panelGrid>
-                <h:commandLink action="#{personnelLangController.update}" value="#{bundle.EditPersonnelLangSaveLink}"/>
-                <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditPersonnelLangViewLink}"/>
-                <br />
-                <h:commandLink action="#{personnelLangController.prepareList}" value="#{bundle.EditPersonnelLangShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditPersonnelLangIndexLink}" />
+                    
+                    
+                </p:panelGrid>
+                <p:commandButton  ajax="false" action="#{personnelLangController.update}" value="#{bundle.EditPersonnelLangSaveLink}"/>
+                
             </h:form>
-        </ui:define>
-    </ui:composition>
+    </h:body>
+  
 
 </html>

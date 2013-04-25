@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMetareferentielsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMetareferentielsLabel_idmetareferentiels}" for="idmetareferentiels" />
+                    <h:inputText id="idmetareferentiels" value="#{metareferentielsController.selected.idmetareferentiels}" title="#{bundle.CreateMetareferentielsTitle_idmetareferentiels}" required="true" requiredMessage="#{bundle.CreateMetareferentielsRequiredMessage_idmetareferentiels}"/>
+                    <h:outputLabel value="#{bundle.CreateMetareferentielsLabel_labelmetatfr}" for="labelmetatfr" />
+                    <h:inputText id="labelmetatfr" value="#{metareferentielsController.selected.labelmetatfr}" title="#{bundle.CreateMetareferentielsTitle_labelmetatfr}" />
+                    <h:outputLabel value="#{bundle.CreateMetareferentielsLabel_labelmetatar}" for="labelmetatar" />
+                    <h:inputText id="labelmetatar" value="#{metareferentielsController.selected.labelmetatar}" title="#{bundle.CreateMetareferentielsTitle_labelmetatar}" />
+                    <h:outputLabel value="#{bundle.CreateMetareferentielsLabel_metareferentielsIdmetareferentiels}" for="metareferentielsIdmetareferentiels" />
+                    <h:selectOneMenu id="metareferentielsIdmetareferentiels" value="#{metareferentielsController.selected.metareferentielsIdmetareferentiels}" title="#{bundle.CreateMetareferentielsTitle_metareferentielsIdmetareferentiels}" >
+                        <f:selectItems value="#{metareferentielsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{metareferentielsController.create}" value="#{bundle.CreateMetareferentielsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{metareferentielsController.prepareList}" value="#{bundle.CreateMetareferentielsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMetareferentielsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

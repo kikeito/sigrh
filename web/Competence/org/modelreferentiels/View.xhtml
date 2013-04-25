@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewModelreferentielsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewModelreferentielsLabel_idmodelreferentiels}"/>
+                    <h:outputText value="#{modelreferentielsController.selected.idmodelreferentiels}" title="#{bundle.ViewModelreferentielsTitle_idmodelreferentiels}"/>
+                    <h:outputText value="#{bundle.ViewModelreferentielsLabel_nommodelref}"/>
+                    <h:outputText value="#{modelreferentielsController.selected.nommodelref}" title="#{bundle.ViewModelreferentielsTitle_nommodelref}"/>
+                    <h:outputText value="#{bundle.ViewModelreferentielsLabel_nommodelrefar}"/>
+                    <h:outputText value="#{modelreferentielsController.selected.nommodelrefar}" title="#{bundle.ViewModelreferentielsTitle_nommodelrefar}"/>
+                    <h:outputText value="#{bundle.ViewModelreferentielsLabel_description}"/>
+                    <h:outputText value="#{modelreferentielsController.selected.description}" title="#{bundle.ViewModelreferentielsTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewModelreferentielsLabel_descriptionar}"/>
+                    <h:outputText value="#{modelreferentielsController.selected.descriptionar}" title="#{bundle.ViewModelreferentielsTitle_descriptionar}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{modelreferentielsController.destroyAndView}" value="#{bundle.ViewModelreferentielsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewModelreferentielsEditLink}"/>
+                <br />
+                <h:commandLink action="#{modelreferentielsController.prepareCreate}" value="#{bundle.ViewModelreferentielsCreateLink}" />
+                <br />
+                <h:commandLink action="#{modelreferentielsController.prepareList}" value="#{bundle.ViewModelreferentielsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewModelreferentielsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

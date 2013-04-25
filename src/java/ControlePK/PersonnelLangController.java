@@ -23,11 +23,16 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
+/**
+ *
+ * @author HAMED
+ */
 @ManagedBean(name = "personnelLangController")
 @SessionScoped
 public class PersonnelLangController implements Serializable {
 
     private PersonnelLang current;
+    private PersonnelLang current1;
     private PersonnelLang currentfr;
     private PersonnelLang currentar;
     private DataModel items = null;
@@ -48,34 +53,66 @@ public class PersonnelLangController implements Serializable {
     private String prenomfr;
     private String prenomar;
 
+    /**
+     *
+     * @return
+     */
     public String getNomfr() {
         return nomfr;
     }
 
+    /**
+     *
+     * @param nomfr
+     */
     public void setNomfr(String nomfr) {
         this.nomfr = nomfr;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNomar() {
         return nomar;
     }
 
+    /**
+     *
+     * @param nomar
+     */
     public void setNomar(String nomar) {
         this.nomar = nomar;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPrenomfr() {
         return prenomfr;
     }
 
+    /**
+     *
+     * @param prenomfr
+     */
     public void setPrenomfr(String prenomfr) {
         this.prenomfr = prenomfr;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPrenomar() {
         return prenomar;
     }
 
+    /**
+     *
+     * @param prenomar
+     */
     public void setPrenomar(String prenomar) {
         this.prenomar = prenomar;
     }
@@ -83,84 +120,163 @@ public class PersonnelLangController implements Serializable {
     @ManagedProperty(value = "#{personnelController}")
     private PersonnelController perscont;
 
+    /**
+     *
+     * @return
+     */
     public LangFacade getEjbFacadeLang() {
         return ejbFacadeLang;
     }
 
+    /**
+     *
+     * @param ejbFacadeLang
+     */
     public void setEjbFacadeLang(LangFacade ejbFacadeLang) {
         this.ejbFacadeLang = ejbFacadeLang;
     }
 
+    /**
+     *
+     * @return
+     */
     public PersonnelController getPerscont() {
         return perscont;
     }
 
+    /**
+     *
+     * @param perscont
+     */
     public void setPerscont(PersonnelController perscont) {
         this.perscont = perscont;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<PersonnelLang> getFiltredPersonnels() {
         return FiltredPersonnels;
     }
 
+    /**
+     *
+     * @param FiltredPersonnels
+     */
     public void setFiltredPersonnels(List<PersonnelLang> FiltredPersonnels) {
         this.FiltredPersonnels = FiltredPersonnels;
     }
 
+    /**
+     *
+     * @return
+     */
     public PersonnelLang getCurrentfr() {
         return currentfr;
     }
 
+    /**
+     *
+     * @param currentfr
+     */
     public void setCurrentfr(PersonnelLang currentfr) {
         this.currentfr = currentfr;
     }
 
+    /**
+     *
+     * @return
+     */
     public PersonnelLang getCurrentar() {
         return currentar;
     }
 
+    /**
+     *
+     * @param currentar
+     */
     public void setCurrentar(PersonnelLang currentar) {
         this.currentar = currentar;
     }
 
+    /**
+     *
+     * @return
+     */
     public Personnel getPesonnel() {
         
         return pesonnel;
     }
 
+    /**
+     *
+     * @param pesonnel
+     */
     public void setPesonnel(Personnel pesonnel) {
         this.pesonnel = pesonnel;
     }
 
+    /**
+     *
+     * @return
+     */
     public PersonnelFacade getEjbFacadeprs() {
         return ejbFacadeprs;
     }
 
+    /**
+     *
+     * @param ejbFacadeprs
+     */
     public void setEjbFacadeprs(PersonnelFacade ejbFacadeprs) {
         this.ejbFacadeprs = ejbFacadeprs;
     }
 
+    /**
+     *
+     * @return
+     */
     public PersonnelLang getSelectedPersonnellang() {
         return selectedPersonnellang;
     }
 
+    /**
+     *
+     * @param selectedPersonnellang
+     */
     public void setSelectedPersonnellang(PersonnelLang selectedPersonnellang) {
         this.selectedPersonnellang = selectedPersonnellang;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<PersonnelLang> getPersonnels() {
         Personnels = new ArrayList();
         Personnels = ejbFacade.findAll();
         return Personnels;
     }
 
+    /**
+     *
+     * @param Personnels
+     */
     public void setPersonnels(List<PersonnelLang> Personnels) {
         this.Personnels = Personnels;
     }
 
+    /**
+     *
+     */
     public PersonnelLangController() {
     }
 
+    /**
+     *
+     * @return
+     */
     public PersonnelLang getSelected() {
         if (current == null) {
             current = new PersonnelLang();
@@ -173,6 +289,10 @@ public class PersonnelLangController implements Serializable {
         return ejbFacade;
     }
 
+    /**
+     *
+     * @return
+     */
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -190,23 +310,39 @@ public class PersonnelLangController implements Serializable {
         return pagination;
     }
 
+    /**
+     *
+     * @return
+     */
     public String prepareList() {
         recreateModel();
         return "List";
     }
 
+    /**
+     *
+     * @return
+     */
     public String prepareView() {
         current = (PersonnelLang) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
+    /**
+     *
+     * @return
+     */
     public String prepareCreate() {
         
         selectedItemIndex = -1;
         return "Create";
     }
 
+    /**
+     *
+     * @return
+     */
     public String create() {
         try {
             //getFacade().create(current);
@@ -235,6 +371,10 @@ public class PersonnelLangController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String createpers() {
         try {
             
@@ -250,23 +390,36 @@ public class PersonnelLangController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String prepareEdit() {
         current = (PersonnelLang) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
+    /**
+     *
+     * @return
+     */
     public String update() {
         try {
-            getFacade().edit(current);
+            ejbFacadeprs.edit(selectedPersonnellang.getPersonnelIdpersonnel());
+            getFacade().edit(selectedPersonnellang);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("PersonnelLangUpdated"));
-            return "View";
+            return null;
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String destroy() {
         try {
 
@@ -280,6 +433,10 @@ public class PersonnelLangController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String destroyAndView() {
         performDestroy();
         recreateModel();
@@ -317,6 +474,10 @@ public class PersonnelLangController implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public DataModel getItems() {
         if (items == null) {
             items = getPagination().createPageDataModel();
@@ -332,29 +493,55 @@ public class PersonnelLangController implements Serializable {
         pagination = null;
     }
 
+    /**
+     *
+     * @return
+     */
     public String next() {
         getPagination().nextPage();
         recreateModel();
         return "List";
     }
 
+    /**
+     *
+     * @return
+     */
     public String previous() {
         getPagination().previousPage();
         recreateModel();
         return "List";
     }
 
+    /**
+     *
+     * @return
+     */
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
 
+    /**
+     *
+     * @return
+     */
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
+    /**
+     *
+     */
     @FacesConverter(forClass = PersonnelLang.class)
     public static class PersonnelLangControllerConverter implements Converter {
 
+        /**
+         *
+         * @param facesContext
+         * @param component
+         * @param value
+         * @return
+         */
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
@@ -376,6 +563,13 @@ public class PersonnelLangController implements Serializable {
             return sb.toString();
         }
 
+        /**
+         *
+         * @param facesContext
+         * @param component
+         * @param object
+         * @return
+         */
         public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
             if (object == null) {
                 return null;

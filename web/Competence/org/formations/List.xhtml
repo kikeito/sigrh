@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFormationsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFormationsEmpty}" rendered="#{formationsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{formationsController.items.rowCount > 0}">
+                    <h:outputText value="#{formationsController.pagination.pageFirstItem + 1}..#{formationsController.pagination.pageLastItem + 1}/#{formationsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{formationsController.previous}" value="#{bundle.Previous} #{formationsController.pagination.pageSize}" rendered="#{formationsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{formationsController.next}" value="#{bundle.Next} #{formationsController.pagination.pageSize}" rendered="#{formationsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{formationsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFormationsTitle_idformations}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idformations}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFormationsTitle_dateDebut}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateDebut}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFormationsTitle_dateFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateFin}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFormationsTitle_typeformationIdtypeformation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeformationIdtypeformation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{formationsController.prepareView}" value="#{bundle.ListFormationsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{formationsController.prepareEdit}" value="#{bundle.ListFormationsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{formationsController.destroy}" value="#{bundle.ListFormationsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{formationsController.prepareCreate}" value="#{bundle.ListFormationsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListFormationsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

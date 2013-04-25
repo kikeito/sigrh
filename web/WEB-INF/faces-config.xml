@@ -16,5 +16,6 @@
             <base-name>/Bundle</base-name>
             <var>bundle</var>
         </resource-bundle>
+        
     </application>
 </faces-config>

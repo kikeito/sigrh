@@ -18,11 +18,18 @@ public class ParamsLangFacade extends AbstractFacade<ParamsLang> {
     @PersistenceContext(unitName = "GestionCarrierePU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public ParamsLangFacade() {
         super(ParamsLang.class);
     }

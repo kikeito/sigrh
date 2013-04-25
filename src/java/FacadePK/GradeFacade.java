@@ -18,11 +18,18 @@ public class GradeFacade extends AbstractFacade<Grade> {
     @PersistenceContext(unitName = "GestionCarrierePU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public GradeFacade() {
         super(Grade.class);
     }
